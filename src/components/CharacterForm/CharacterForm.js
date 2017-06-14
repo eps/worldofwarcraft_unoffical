@@ -10,7 +10,7 @@ class CharacterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      characterName: '',
       profile: []
     };
 
@@ -18,13 +18,13 @@ class CharacterForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange(e) {
+    this.setState({ characterName: e.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.get('https://us.api.battle.net/wow/character/Proudmoore/' + this.state.value + '?locale=en_US&apikey=' + wowkey ).then(response => {
+    axios.get('https://us.api.battle.net/wow/character/Proudmoore/' + this.state.characterName + '?locale=en_US&apikey=' + wowkey ).then(response => {
       this.setState({ profile: response.data });
       console.log('testing profile', this.state.profile);
     })
@@ -33,7 +33,6 @@ class CharacterForm extends React.Component {
     })
   }
 
-
   render() {
 
     return (
@@ -41,12 +40,12 @@ class CharacterForm extends React.Component {
         <div className="centralized">
           <div className="form-bg">
             <form onSubmit={this.handleSubmit}>
-              <label> Name: <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <label> Name: <input type="text" placeholder="Character Name" name="characterName" value={this.state.value} onChange={this.handleChange} />
               </label>
               <input type="submit" value="Submit" />
             </form>
           </div>
-          <CharacterInfo profile={this.state.profile}/>
+          <CharacterInfo profile={this.state.profile} />
         </div>
       </div>
     );
