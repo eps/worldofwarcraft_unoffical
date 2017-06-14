@@ -1,0 +1,17 @@
+.bg-white {
+  width: 100%;
+  background-color: white;
+  padding-top: 50px;
+}
+
+.centralized {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #dedede;
+  height: 100%;
+}
+
+.form-bg {
+  padding: 50px;
+}
