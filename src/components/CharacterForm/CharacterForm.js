@@ -11,7 +11,8 @@ class CharacterForm extends React.Component {
     super(props);
     this.state = {
       characterName: '',
-      profile: []
+      profile: [],
+      submitted: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,8 +26,10 @@ class CharacterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     axios.get('https://us.api.battle.net/wow/character/Proudmoore/' + this.state.characterName + '?locale=en_US&apikey=' + wowkey ).then(response => {
-      this.setState({ profile: response.data });
-      console.log('testing profile', this.state.profile);
+      this.setState({
+        profile: response.data,
+        submitted: true
+      });
     })
     .catch((error) => {
       console.log("error",error)
@@ -45,7 +48,7 @@ class CharacterForm extends React.Component {
               <input type="submit" value="Submit" />
             </form>
           </div>
-          <CharacterInfo profile={this.state.profile} />
+          {this.state.submitted && <CharacterInfo profile={this.state.profile}/>}
         </div>
       </div>
     );
