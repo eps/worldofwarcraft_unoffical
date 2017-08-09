@@ -1,4 +1,5 @@
 import React from 'react';
+import './CharacterInfo.css';
 
 class CharacterInfo extends React.Component {
   constructor(props) {
@@ -21,8 +22,11 @@ class CharacterInfo extends React.Component {
     console.log(profile);
 
     return (
-      <div className="character">
-        <h1>{profile.name}</h1>
+      <div className="character-form">
+        <div className="character-info">
+          <h1>{profile.name}</h1>
+          <h2>{profile.level} - {profile.realm}</h2>
+        </div>
         <img src={`${link}/${newAvatar}`} alt=""
           onLoad={this.handleImageLoaded.bind(this)}
           onError={this.handleImageErrored.bind(this)}
