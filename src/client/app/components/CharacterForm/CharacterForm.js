@@ -1,8 +1,11 @@
-import React from 'react';
-import axios from 'axios';
-import './CharacterForm.scss';
-import CharacterInfo from '../CharacterInfo/CharacterInfo';
-import config from '../../../../config/config.js';
+const _ = require('lodash');
+const axios = require('axios');
+const React =require('react');
+
+const CharacterInfo = require('../CharacterInfo/CharacterInfo');
+const config = require('../../../../config/config.js');
+
+// import './CharacterForm.scss';
 
 const wowkey = config.WOW_API_KEY;
 
@@ -10,11 +13,13 @@ class CharacterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      realm: '',
       characterName: '',
+      realm: '',
+      realmList: [],
       submitted: false
     };
 
+    this.getRealmList();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRealmChange = this.handleRealmChange.bind(this);
@@ -25,16 +30,29 @@ class CharacterForm extends React.Component {
     console.log(e.target.name, e.target.value);
   }
 
+  getRealmList() {
+    axios.get('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=' + wowkey)
+      .then((res) => {
+        const realmNames = _.map(res, 'name');
+        console.log(realmNames);
+          this.setState = ({
+            realmList: realmNames
+          });
+        }).catch((err) => {
+          console.log(err);
+        });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.log('realm is', this.state.realm);
-    axios.get('https://us.api.battle.net/wow/character/'+this.state.realm+ '/' + this.state.characterName + '?locale=en_US&apikey=' + wowkey ).then(response => {
-      this.setState({
-        profile: response.data,
-        submitted: true
-      });
-    })
-    .catch((error) => {
+    axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?locale=en_US&apikey=' + wowkey)
+      .then((response) => {
+        this.setState({
+          profile: response.data,
+          submitted: true
+        });
+      }).catch((error) => {
       console.log("error",error)
     })
   }
@@ -54,9 +72,7 @@ class CharacterForm extends React.Component {
                 <input type="text" placeholder="Character Name" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
                 <button type="submit" value="Submit">Search</button>
                 <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
-                  <option value="proudmoore">Proudmoore</option>
-                  <option value="emerald dream">Emerald Dream</option>
-                  <option value="frostmourne">Frostmourne</option>
+                  {this.state.realmList}
                 </select>
               </form>
             </div>
