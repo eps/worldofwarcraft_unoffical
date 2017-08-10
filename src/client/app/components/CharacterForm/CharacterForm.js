@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import './CharacterForm.css';
+import './CharacterForm.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
-import config from '../../config/config.js';
+import config from '../../../../config/config.js';
 
 const wowkey = config.WOW_API_KEY;
 
