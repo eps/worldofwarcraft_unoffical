@@ -53,10 +53,10 @@ class CharacterForm extends React.Component {
       console.log(value);
       });
       // => Logs `1` then `2`.
-
       _.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
       console.log(key);
     });
+
 
     return (
       <div className="bg-white">
