@@ -1,20 +1,20 @@
 import _ from 'lodash'
-import React from 'react';
 import axios from 'axios';
+import React from 'react';
 import './CharacterForm.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import config from '../../../../config/config.js';
 import Button from '../commons/Button/Button';
 
-const wowkey = config.WOW_API_KEY;
-// let text = _.isUndefined(route.rightButtonText) ? 'Default value' : route.rightButtonText;
+const wowKey = config.WOW_API_KEY;
+
 
 class CharacterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      realm: '',
       characterName: '',
+      realm: '',
       submitted: false
     };
 
@@ -31,15 +31,15 @@ class CharacterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('realm is', this.state.realm);
-    axios.get('https://us.api.battle.net/wow/character/'+this.state.realm+ '/' + this.state.characterName + '?locale=en_US&apikey=' + wowkey ).then(response => {
+    axios.get('https://us.api.battle.net/wow/character/' + this.state.realm+ '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey)
+    .then((response) => {
       this.setState({
         profile: response.data,
         submitted: true
       });
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.log("error",error)
-    })
+    });
   }
 
   handleRealmChange(e) {
@@ -75,7 +75,7 @@ class CharacterForm extends React.Component {
               </form>
             </div>
           </div>
-          {this.state.submitted && <CharacterInfo profile={this.state.profile}/>}
+          { this.state.submitted && <CharacterInfo profile={ this.state.profile }/> }
         </div>
       </div>
     );
