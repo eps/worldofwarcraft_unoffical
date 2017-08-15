@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import axios from 'axios';
 import React from 'react';
-import './CharacterForm.scss';
+import styles from './CharacterForm.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import config from '../../../../config/config.js';
 import Button from '../commons/Button/Button';
@@ -60,13 +60,13 @@ class CharacterForm extends React.Component {
 
     return (
       <div className="bg-white">
-        <div className="centralized">
-          <div className="form-bg">
+        <div className={styles.centralized}>
+          <div className={styles.formBg}>
             <div className="search-input">
               <form onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="Character Name" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
                 <button type="submit" value="Submit">Search</button>
-                <Button default fluid type="submit">Search</Button>
+                <Button default fluid danger>testing</Button>
                 <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   <option value="proudmoore">Proudmoore</option>
                   <option value="emerald dream">Emerald Dream</option>

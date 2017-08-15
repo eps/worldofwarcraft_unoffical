@@ -1,0 +1,30 @@
+.default {
+  border-radius: 2px;
+  height: 40px;
+  border: none;
+  padding: 2px 20px;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 1px;
+  color: black;
+  cursor: pointer;
+  position: relative;
+}
+
+.fluid {
+  width: 100%;
+}
+
+.danger {
+  background-color: #fb625d;
+  color: #ffffff;
+  &:hover {
+    background-color: desaturate(#fb625d, 15%);
+  }
+}
