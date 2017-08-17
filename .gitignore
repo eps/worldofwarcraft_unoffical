@@ -20,4 +20,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
+# api keys
 config.js
+
+src/client/public/bundle.js

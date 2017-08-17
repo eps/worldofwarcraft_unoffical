@@ -1,10 +1,11 @@
 import _ from 'lodash'
 import axios from 'axios';
 import React from 'react';
-import './CharacterForm.scss';
+import styles from './CharacterForm.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import config from '../../../../config/config.js';
 import Button from '../commons/Button/Button';
+import FASearch from 'react-icons/lib/fa/search';
 
 const wowKey = config.WOW_API_KEY;
 
@@ -60,13 +61,13 @@ class CharacterForm extends React.Component {
 
     return (
       <div className="bg-white">
-        <div className="centralized">
-          <div className="form-bg">
-            <div className="search-input">
+        <div className={styles.centralized}>
+            <div className={styles.searchContainer}>
               <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Character Name" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
+                <input className={styles.searchInput} type="text" placeholder="Search character" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
+                <FASearch className={styles.searchIcon}/>
                 <button type="submit" value="Submit">Search</button>
-                <Button default fluid type="submit">Search</Button>
+                <Button default fluid danger>testing</Button>
                 <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   <option value="proudmoore">Proudmoore</option>
                   <option value="emerald dream">Emerald Dream</option>
@@ -74,7 +75,6 @@ class CharacterForm extends React.Component {
                 </select>
               </form>
             </div>
-          </div>
           { this.state.submitted && <CharacterInfo profile={ this.state.profile }/> }
         </div>
       </div>

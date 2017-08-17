@@ -47,6 +47,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 const APP_DIR = path.resolve(__dirname, 'src/client/app');
@@ -65,11 +66,15 @@ const config = {
        loader : 'babel-loader'
      },
      {
-       test: /\.scss$/,
-       loaders: ['style-loader', 'css-loader?url=false', 'sass-loader']
-     }
+        test: /.(scss|css)$/,
+        loader: 'style-loader!css-loader?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded&sourceMap'
+      }
    ]
- }
-};
+ },
+  plugins: [
+    new ExtractTextPlugin('styles.css')
+  ]
+}
+
 
 module.exports = config;
