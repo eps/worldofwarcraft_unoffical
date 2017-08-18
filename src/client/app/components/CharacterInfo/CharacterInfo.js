@@ -1,5 +1,5 @@
 import React from 'react';
-import './CharacterInfo.scss';
+import styles from './CharacterInfo.scss';
 
 class CharacterInfo extends React.Component {
   constructor(props) {
@@ -18,19 +18,22 @@ class CharacterInfo extends React.Component {
   render() {
     const { profile } = this.props;
     const link = "http://render-us.worldofwarcraft.com/character/";
-    const newAvatar = profile.thumbnail.replace("avatar", "profilemain");
+    const newAvatar = profile.thumbnail;
     console.log(profile);
 
     return (
-      <div className="character-form">
-        <div className="character-info">
-          <h1>{profile.name}</h1>
-          <h2>{profile.level} - {profile.realm}</h2>
-        </div>
+      <div className={styles.characterContainer}>
+      <div className={styles.avatarContainer}>
         <img src={`${link}/${newAvatar}`} alt=""
           onLoad={this.handleImageLoaded.bind(this)}
           onError={this.handleImageErrored.bind(this)}
         />
+      </div>
+        <div className={styles.characterInfo}>
+          <h3>{profile.name}</h3>
+          <h3>{profile.guild.name}</h3>
+          <h3>{profile.level} - {profile.realm}</h3>
+        </div>
         {this.state.imageStatus}
       </div>
     )

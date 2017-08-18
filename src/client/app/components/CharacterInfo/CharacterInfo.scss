@@ -1,14 +1,31 @@
-.character-form {
-  color: white;
+.characterContainer {
+  margin-top: 100px;
+  height: 100px;
+  background-color: black;
 }
 
-.character-info {
+.characterInfo {
   text-align: left;
+  color: white;
+  position: relative;
+  float: left;
+  margin-left: 10px;
 }
 
-img {
-  display: block;
-  margin: 0 auto;
+
+.avatarContainer {
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: relative;
+  img {
+    width: 100%;
+  }
+}
+
+h3 {
+  margin: 0;
+  font-size: 13px;
 }
 
 h1 {

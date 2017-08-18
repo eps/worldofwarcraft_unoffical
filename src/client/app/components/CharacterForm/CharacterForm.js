@@ -47,7 +47,7 @@ class CharacterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('realm is', this.state.realm);
-    axios.get('https://us.api.battle.net/wow/character/' + this.state.realm+ '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey)
+    axios.get('https://us.api.battle.net/wow/character/' + 'proudmoore' + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey)
     .then((response) => {
       this.setState({
         profile: response.data,
@@ -80,7 +80,6 @@ class CharacterForm extends React.Component {
                 </select>
               </form>
             </div>
-          { this.state.realmList }
           { this.state.submitted && <CharacterInfo profile={ this.state.profile }/> }
         </div>
       </div>
