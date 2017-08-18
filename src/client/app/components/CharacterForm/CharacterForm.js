@@ -16,18 +16,33 @@ class CharacterForm extends React.Component {
     this.state = {
       characterName: '',
       realm: '',
+      realmList: [],
       submitted: false
     };
-
+    this.getRealmList();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRealmChange = this.handleRealmChange.bind(this);
   }
 
   handleChange(e) {
+    console.log('clicking');
     this.setState({[e.target.name]: e.target.value})
     console.log(e.target.name, e.target.value);
   }
+
+  getRealmList() {
+    axios.get('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=' + wowKey)
+      .then((res) => {
+        const realmNames = _.map(res.data.realms, 'name');
+          this.setState({
+            realmList: realmNames
+          });
+          console.log('working', realmNames);
+        }).catch((err) => {
+          console.log(err);
+        });
+   }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -49,16 +64,6 @@ class CharacterForm extends React.Component {
   }
 
   render() {
-    const x =
-      _.forEach([1, 2], function(value) {
-      console.log(value);
-      });
-      // => Logs `1` then `2`.
-      _.forEach({ 'a': 1, 'b': 2 }, function(value, key) {
-      console.log(key);
-    });
-
-
     return (
       <div className="bg-white">
         <div className={styles.centralized}>
@@ -75,6 +80,7 @@ class CharacterForm extends React.Component {
                 </select>
               </form>
             </div>
+          { this.state.realmList }
           { this.state.submitted && <CharacterInfo profile={ this.state.profile }/> }
         </div>
       </div>
