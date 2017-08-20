@@ -11,6 +11,7 @@ class Button extends React.Component {
     return (
        <button className={cx(styles, {
          [styles.default]: true,
+         [styles.primary]: props.primary,
          [styles.fluid]: props.fluid,
          [styles.danger]: props.danger,
        })}
