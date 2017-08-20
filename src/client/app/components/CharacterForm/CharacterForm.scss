@@ -15,15 +15,14 @@
 
 .searchContainer {
   height: 40px;
+  width: 800px;
+  float: left;
   position: relative;
   input {
-    background-color: black;
-    width: 100%;
+    background-color: white;
+    width: 50%;
     height: 100%;
     padding-left: 24px;
-    &:active {
-      background-color: white;
-    }
   }
   .searchIcon {
     color: #aaa;
@@ -34,13 +33,19 @@
   }
 }
 
+.optionContainer {
+  width: calc(100% - 400px) !important;
+  float: right;
+  position: relative;
+  select {
+    height: 100%;
+    width: 100%;
+  }
+}
 .searchInput {
   border-color: #31575a;
   font-size: 12px;
   border: 1px solid #d8dde6;
   border-radius: 4px;
   padding: 0px 12px 0 9px;
-  &.focus {
-    background-color: white;
-  }
 }
