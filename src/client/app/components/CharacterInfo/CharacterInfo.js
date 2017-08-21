@@ -30,9 +30,9 @@ class CharacterInfo extends React.Component {
         />
       </div>
         <div className={styles.characterInfo}>
-          <h3>{profile.name}</h3>
-          <h3>{profile.guild.name}</h3>
-          <h3>{profile.level} - {profile.realm}</h3>
+          <div className={styles.charText}>{profile.name}</div>
+          <div className={styles.charText}>&lt;{profile.guild.name}&gt;</div>
+          <div className={styles.charText}>{profile.level} - {profile.realm}</div>
         </div>
         {this.state.imageStatus}
       </div>
