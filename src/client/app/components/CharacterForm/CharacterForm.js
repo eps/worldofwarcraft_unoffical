@@ -80,12 +80,12 @@ class CharacterForm extends React.Component {
     }
 
     return (
-      <div className="bg-white">
+      <div className={styles.bgWhite}>
         <div className={styles.centralized}>
             <div className={styles.searchContainer}>
               <form onSubmit={this.handleSubmit}>
                 <input className={styles.searchInput} type="text" placeholder="Search character" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
-                <FASearch className={styles.searchIcon}/>
+                <FASearch onClick={this.handleSubmit} className={styles.searchIcon}/>
                 <div className={styles.optionContainer}>
                   <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   </select>
