@@ -6,18 +6,38 @@ class RaidProgression extends React.Component {
     super(props);
   }
 
+  render() {
+    const { profile }  = this.props;
+    const bossKills = profile.progression.raids[38].bosses;
 
-render() {
-  const { profile } = this.props;
-  console.log('raid', profile[1]);
-
-  return (
-    <div className={styles.raid}>
-      <div>{profile[1].progression.raids[38].name}</div>
-      <div>Boss Kills {profile[1].progression.raids[38].bosses["0"].normalKills}</div>
-    </div>
-  )
-}
+    return (
+      <div className={styles.raid}>
+        <div className={styles.content}>
+          <div className={styles.detail}>
+            <div className={styles.title}>
+              {profile.progression.raids[38].name}
+            </div>
+            <div className={styles.progress}>Progress</div>
+            <div className={styles.boss}>Boss Kills</div>
+          </div>
+          <div className={styles.difficulty}>
+            <ul>
+              <li>Normal</li>
+              <li>Heroic</li>
+              <li>Mythic</li>
+            </ul>
+          </div>
+          <div className={styles.bossKills}>
+            <ul>
+              <li>Normal kills</li>
+              <li>Heroic</li>
+              <li>Mythic</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
 }
 

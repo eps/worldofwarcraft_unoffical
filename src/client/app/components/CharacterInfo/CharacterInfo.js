@@ -38,7 +38,7 @@ class CharacterInfo extends React.Component {
           </div>
           {this.state.imageStatus}
         </div>
-        <RaidProgression profile={this.props.profile}/>
+        <RaidProgression profile={this.props.profile[1]} />
 
       </div>
     )
