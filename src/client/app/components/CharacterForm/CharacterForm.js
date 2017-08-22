@@ -47,16 +47,20 @@ class CharacterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('realm is', this.state.realm);
-    axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey)
-    .then((response) => {
+
+    axios.all([
+      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey),
+      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=progression&locale=en_US&apikey=' + wowKey)
+    ])
+    .then(axios.spread((guild,progression) => {
+      let profile = _.concat(guild.data, progression.data);
       this.setState({
-        profile: response.data,
+        profile: profile,
         submitted: true
-      });
-    }).catch((error) => {
-      console.log("error",error)
-    });
-  }
+      })
+    }))
+    .catch(error => console.log('error', error));
+  };
 
   handleRealmChange(e) {
     console.log('currently selected', e.target.value);

@@ -1,5 +1,6 @@
 .characterContainer {
   float: left;
+  width: 100%;
   margin-top: 60px;
   height: 100px;
   background-color: black;
@@ -27,4 +28,8 @@
   img {
     width: 100%;
   }
+}
+
+.raidContent {
+  float: left;
 }
