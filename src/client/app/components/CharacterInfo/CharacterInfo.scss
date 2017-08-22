@@ -1,17 +1,35 @@
-.character-form {
-  color: white;
+.characterContainer {
+  float: left;
+  width: 100%;
+  margin-top: 60px;
+  height: 100px;
+  background-color: black;
 }
 
-.character-info {
+.characterInfo {
+  font-family: 'Open Sans', sans-serif;
   text-align: left;
+  color: white;
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  .charText {
+    padding: 5px;
+    font-size: 13px;
+  }
 }
 
-img {
-  display: block;
-  margin: 0 auto;
+
+.avatarContainer {
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: relative;
+  img {
+    width: 100%;
+  }
 }
 
-h1 {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  letter-spacing: 1px;
+.raidContent {
+  float: left;
 }

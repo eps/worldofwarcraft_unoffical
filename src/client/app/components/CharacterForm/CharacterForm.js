@@ -47,16 +47,20 @@ class CharacterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('realm is', this.state.realm);
-    axios.get('https://us.api.battle.net/wow/character/' + this.state.realm+ '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey)
-    .then((response) => {
+
+    axios.all([
+      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey),
+      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=progression&locale=en_US&apikey=' + wowKey)
+    ])
+    .then(axios.spread((guild,progression) => {
+      let profile = _.concat(guild.data, progression.data);
       this.setState({
-        profile: response.data,
+        profile: profile,
         submitted: true
-      });
-    }).catch((error) => {
-      console.log("error",error)
-    });
-  }
+      })
+    }))
+    .catch(error => console.log('error', error));
+  };
 
   handleRealmChange(e) {
     console.log('currently selected', e.target.value);
@@ -64,23 +68,31 @@ class CharacterForm extends React.Component {
   }
 
   render() {
+
+    const realmList = this.state.realmList;
+    const selectBox = document.getElementById('realm');
+
+    for(var i = 0;i <realmList.length; i++){
+      const realmNames = realmList[i];
+      const option = document.createElement("option");
+      option.text = realmNames;
+      selectBox.add(option);
+    }
+
     return (
-      <div className="bg-white">
+      <div className={styles.bgWhite}>
         <div className={styles.centralized}>
             <div className={styles.searchContainer}>
               <form onSubmit={this.handleSubmit}>
                 <input className={styles.searchInput} type="text" placeholder="Search character" name="characterName" value={this.state.characterName} onChange={this.handleChange} />
-                <FASearch className={styles.searchIcon}/>
-                <button type="submit" value="Submit">Search</button>
-                <Button default fluid danger>testing</Button>
-                <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
-                  <option value="proudmoore">Proudmoore</option>
-                  <option value="emerald dream">Emerald Dream</option>
-                  <option value="frostmourne">Frostmourne</option>
-                </select>
+                <FASearch onClick={this.handleSubmit} className={styles.searchIcon}/>
+                <div className={styles.optionContainer}>
+                  <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
+                  </select>
+                </div>
+                <Button default primary fluid type="submit">Search</Button>
               </form>
             </div>
-          { this.state.realmList }
           { this.state.submitted && <CharacterInfo profile={ this.state.profile }/> }
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import './CharacterInfo.scss';
+import styles from './CharacterInfo.scss';
+import RaidProgression from '../RaidProgression/RaidProgression';
 
 class CharacterInfo extends React.Component {
   constructor(props) {
@@ -18,20 +19,27 @@ class CharacterInfo extends React.Component {
   render() {
     const { profile } = this.props;
     const link = "http://render-us.worldofwarcraft.com/character/";
-    const newAvatar = profile.thumbnail.replace("avatar", "profilemain");
-    console.log(profile);
+    const newAvatar = profile[0].thumbnail;
+    console.log('character info', profile);
 
     return (
-      <div className="character-form">
-        <div className="character-info">
-          <h1>{profile.name}</h1>
-          <h2>{profile.level} - {profile.realm}</h2>
+      <div>
+        <div className={styles.characterContainer}>
+          <div className={styles.avatarContainer}>
+            <img src={`${link}/${newAvatar}`} alt=""
+              onLoad={this.handleImageLoaded.bind(this)}
+              onError={this.handleImageErrored.bind(this)}
+            />
+          </div>
+          <div className={styles.characterInfo}>
+            <div className={styles.charText}>{profile[0].name}</div>
+            <div className={styles.charText}>&lt;{profile[0].guild.name}&gt;</div>
+            <div className={styles.charText}>{profile[0].level} - {profile[0].realm}</div>
+          </div>
+          {this.state.imageStatus}
         </div>
-        <img src={`${link}/${newAvatar}`} alt=""
-          onLoad={this.handleImageLoaded.bind(this)}
-          onError={this.handleImageErrored.bind(this)}
-        />
-        {this.state.imageStatus}
+        <RaidProgression profile={this.props.profile[1]} />
+
       </div>
     )
   };

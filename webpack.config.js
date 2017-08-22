@@ -67,7 +67,7 @@ const config = {
      },
      {
         test: /.(scss|css)$/,
-        loader: 'style-loader!css-loader?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded&sourceMap'
+        loader: 'style-loader!css-loader?modules&camelCase=dashes&sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded&sourceMap'
       }
    ]
  },
