@@ -69,12 +69,12 @@ class CharacterForm extends React.Component {
     const realmList = this.state.realmList;
     const selectBox = document.getElementById('realm');
 
-    for(var i = 0;i <realmList.length; i++){
-      const realmNames = realmList[i];
+    _.forEach(realmList,(realm) => {
+      const realmNames = realm;
       const option= document.createElement('option');
       option.text= realmNames;
-      selectBox.add(option);
-    };
+      selectBox.add(option); 
+    });
 
     return (
       <div className= {styles.bgWhite}>
