@@ -1,11 +1,28 @@
 .boss-card {
-    border: 1px solid #909090;
-    border-radius: 2px;
-    padding: 16px;
-    background-color: #414243;
-    color: #606060;
-  }
+  flex-flow: row;
+  display: flex;
+  border: 1px solid #909090;
+  padding: 8px;
+  background-color: #181818;
+  color: #606060;
+  margin-bottom: 10px;
+}
 
-  .boss-name {
-    color: #ffffff;
-  }
+.boss-name {
+  text-align: center;
+  color: #ffffff;
+}
+
+.boss-pic {
+  max-height: 200px;
+  width: 100%;
+}
+
+.card-text {
+  order: 2;
+  color: #FFFFFF;
+}
+
+.row {
+  width: 100%;
+}
