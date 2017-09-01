@@ -9,7 +9,6 @@ import FASearch from 'react-icons/lib/fa/search';
 
 const wowKey = config.WOW_API_KEY;
 
-
 class CharacterForm extends React.Component {
   constructor(props) {
     super(props);
