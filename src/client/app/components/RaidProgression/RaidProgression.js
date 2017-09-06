@@ -14,34 +14,37 @@ class RaidProgression extends React.Component {
     const bossKills = _.last(profile.progression.raids).bosses;
 
     return (
-      <div className= {styles.raid}>
-        <div className= {styles.content}>
-          <div className= {styles.detail}>
-            <div className= {styles.title}>
+      <div className={styles.raid}>
+        <div className={styles.content}>
+          <div className={styles.detail}>
+            <div className={styles.title}>
               {_.last(profile.progression.raids).name}
             </div>
-            <div className= {styles.progress}>Progress</div>
-            <div className= {styles.boss}>Boss Kills</div>
+            <div className={styles.progress}>Progress</div>
+            <div className={styles.boss}>Boss Kills</div>
           </div>
           <div className={styles.raidContent}>
-            <div className= {styles.difficulty}>
+            <div className={styles.difficulty}>
               <ul>
                 {bossKills.map((kills) =>
-                  <BossCard key={kills.id}
-                            kills={kills}
+                  <BossCard
+                    key={kills.id}
+                    kills={kills}
                   />
                 )}
               </ul>
             </div>
-            <div className= {styles.difficulty}>
+            <div className={styles.difficulty}>
               <ul>
-              {bossKills.map((kills) =>
-                <Progress key={kills.id} progress={kills}
-                />
-              )}
+                {bossKills.map((kills) =>
+                  <Progress
+                    key={kills.id}
+                    progress={kills}
+                  />
+                )}
               </ul>
             </div>
-            <div className= {styles.bossKills}>
+            <div className={styles.bossKills}>
               <ul>
                 <li>Normal kills</li>
                 <li>Normal kills</li>
