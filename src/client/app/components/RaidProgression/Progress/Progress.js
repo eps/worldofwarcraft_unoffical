@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './Progress.scss';
+import moment from 'moment';
 
 class Progress extends React.Component {
 
     render() {
       const { progress } = this.props;
-      const raids = progress.progression.raids;
-      const bossKills = _.last(raids).bosses;
+      let timeStamp = moment(progress.normalTimestamp).fromNow();
+
       let normal = 0;
       let heroic = 0;
       let mythic = 0;
-      _.forEach(bossKills, (key) => {
+      _.forEach(progress, (key) => {
         if (key.normalKills > 0) {
           normal++;
         }
@@ -21,14 +22,12 @@ class Progress extends React.Component {
           mythic++;
         }
       });
-
+      
       return (
         <div className={styles.progress}>
-          <ul>
-            <li>{normal}/9</li>
-            <li>{heroic}/9</li>
-            <li>{mythic}/9</li>
-          </ul>
+          <div className={styles.progressCard}>
+            <div className={styles.normal}>{timeStamp}</div>
+          </div>
         </div>
       );
     }

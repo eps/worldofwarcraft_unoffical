@@ -2,8 +2,14 @@
   width: 266px;
   text-align: center;
   float: left;
-  ul li {
-    padding: 5px;
-    list-style-type: none;
-  }
 }
+
+.progress-card {
+    float: left;
+    width: 100%;
+    border: 1px solid #909090;
+    border-radius: 2px;
+    padding: 16px;
+    background-color: #414243;
+    color: #606060;
+  }
