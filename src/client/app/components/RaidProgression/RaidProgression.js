@@ -26,10 +26,21 @@ class RaidProgression extends React.Component {
           <div className={styles.raidContent}>
             <div className= {styles.difficulty}>
               <ul>
-                {bossKills.map((kills) => <BossCard kills={kills}/>)}
+                {bossKills.map((kills) =>
+                  <BossCard key={kills.id}
+                            kills={kills}
+                  />
+                )}
               </ul>
             </div>
-            <Progress progress={this.props.profile} />
+            <div className= {styles.difficulty}>
+              <ul>
+              {bossKills.map((kills) =>
+                <Progress key={kills.id} progress={kills}
+                />
+              )}
+              </ul>
+            </div>
             <div className= {styles.bossKills}>
               <ul>
                 <li>Normal kills</li>
