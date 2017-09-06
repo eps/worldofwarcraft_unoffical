@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import React from 'react';
 import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
+import Progress from './Progress/Progress';
 
 class RaidProgression extends React.Component {
   constructor(props) {
@@ -11,22 +12,6 @@ class RaidProgression extends React.Component {
   render() {
     const { profile } = this.props;
     const bossKills = _.last(profile.progression.raids).bosses;
-    console.log(bossKills);
-    let normal = 0;
-    let heroic = 0;
-    let mythic = 0;
-    _.forEach(bossKills, (key) => {
-      if (key.normalKills > 0) {
-        normal++;
-      }
-      if (key.heroicKills > 0) {
-        heroic++;
-      }
-      if (key.mythicKills > 0) {
-        mythic++;
-      }
-    });
-
 
     return (
       <div className= {styles.raid}>
@@ -41,14 +26,19 @@ class RaidProgression extends React.Component {
           <div className={styles.raidContent}>
             <div className= {styles.difficulty}>
               <ul>
-                {bossKills.map((kills) => <BossCard kills={kills}/>)}
+                {bossKills.map((kills) =>
+                  <BossCard key={kills.id}
+                            kills={kills}
+                  />
+                )}
               </ul>
             </div>
-            <div className={styles.progression}>
+            <div className= {styles.difficulty}>
               <ul>
-                <li>{normal}/9</li>
-                <li>{heroic}/9</li>
-                <li>{mythic}/9</li>
+              {bossKills.map((kills) =>
+                <Progress key={kills.id} progress={kills}
+                />
+              )}
               </ul>
             </div>
             <div className= {styles.bossKills}>

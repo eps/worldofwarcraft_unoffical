@@ -25,9 +25,7 @@ class CharacterForm extends React.Component {
   }
 
   handleChange(e) {
-    console.log('clicking');
     this.setState({[e.target.name]: e.target.value});
-    console.log(e.target.name, e.target.value);
   }
 
   getRealmList() {
@@ -55,8 +53,10 @@ class CharacterForm extends React.Component {
       this.setState({
         profile: profile,
         submitted: true
-      })
-    })).catch(error => console.log('error', error));
+      });
+    })).catch((err) => {
+      console.log(err);
+    });
   };
 
   handleRealmChange(e) {
@@ -72,31 +72,31 @@ class CharacterForm extends React.Component {
       const realmNames = realm;
       const option= document.createElement('option');
       option.text= realmNames;
-      selectBox.add(option); 
+      selectBox.add(option);
     });
 
     return (
-      <div className= {styles.bgWhite}>
-        <div className= {styles.centralized}>
-            <div className= {styles.searchContainer}>
-              <form onSubmit= {this.handleSubmit}>
-                <input className= {styles.searchInput} 
-                       type= "text"
-                       placeholder= "Search character" 
-                       name= "characterName" 
-                       value= {this.state.characterName} 
-                       onChange= {this.handleChange}/>
-                <FASearch onClick= {this.handleSubmit} className= {styles.searchIcon}/>
-                <div className= {styles.optionContainer}>
-                  <select id= "realm" 
-                          onChange= {this.handleRealmChange} 
-                          value= {this.state.realm}>
+      <div className={styles.bgWhite}>
+        <div className={styles.centralized}>
+            <div className={styles.searchContainer}>
+              <form onSubmit={this.handleSubmit}>
+                <input className={styles.searchInput}
+                       type="text"
+                       placeholder="Search character"
+                       name="characterName"
+                       value={this.state.characterName}
+                       onChange={this.handleChange}/>
+                <FASearch onClick={this.handleSubmit} className={styles.searchIcon}/>
+                <div className={styles.optionContainer}>
+                  <select id="realm"
+                          onChange={this.handleRealmChange}
+                          value={this.state.realm}>
                   </select>
                 </div>
-                <Button default primary fluid type= "submit">Search</Button>
+                <Button default primary fluid type="submit">Search</Button>
               </form>
             </div>
-          { this.state.submitted && <CharacterInfo profile= {this.state.profile}/> }
+          { this.state.submitted && <CharacterInfo profile={this.state.profile}/> }
         </div>
       </div>
     );
