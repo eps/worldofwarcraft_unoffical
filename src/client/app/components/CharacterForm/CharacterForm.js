@@ -80,17 +80,20 @@ class CharacterForm extends React.Component {
         <div className={styles.centralized}>
             <div className={styles.searchContainer}>
               <form onSubmit={this.handleSubmit}>
-                <input className={styles.searchInput}
-                       type="text"
-                       placeholder="Search character"
-                       name="characterName"
-                       value={this.state.characterName}
-                       onChange={this.handleChange}/>
-                <FASearch onClick={this.handleSubmit} className={styles.searchIcon}/>
+                <input
+                  className={styles.searchInput}
+                  type="text"
+                  placeholder="Search character"
+                  name="characterName"
+                  value={this.state.characterName}
+                  onChange={this.handleChange}
+                />
+                <FASearch
+                  onClick={this.handleSubmit}
+                  className={styles.searchIcon}
+                />
                 <div className={styles.optionContainer}>
-                  <select id="realm"
-                          onChange={this.handleRealmChange}
-                          value={this.state.realm}>
+                  <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   </select>
                 </div>
                 <Button default primary fluid type="submit">Search</Button>
