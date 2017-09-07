@@ -22,7 +22,7 @@ class Progress extends React.Component {
           mythic++;
         }
       });
-      
+
       return (
         <div className={styles.progress}>
           <div className={styles.progressCard}>

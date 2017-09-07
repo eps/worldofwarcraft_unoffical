@@ -1,8 +1,10 @@
 import * as _ from 'lodash';
 import React from 'react';
+import cx from 'classnames';
 import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
 import Progress from './Progress/Progress';
+import BossKills from './BossKills/BossKills';
 
 class RaidProgression extends React.Component {
   constructor(props) {
@@ -17,40 +19,23 @@ class RaidProgression extends React.Component {
       <div className={styles.raid}>
         <div className={styles.content}>
           <div className={styles.detail}>
-            <div className={styles.title}>
-              {_.last(profile.progression.raids).name}
-            </div>
-            <div className={styles.progress}>Progress</div>
-            <div className={styles.boss}>Boss Kills</div>
-          </div>
-          <div className={styles.raidContent}>
-            <div className={styles.difficulty}>
-              <ul>
-                {bossKills.map((kills) =>
-                  <BossCard
-                    key={kills.id}
-                    kills={kills}
-                  />
-                )}
-              </ul>
-            </div>
-            <div className={styles.difficulty}>
-              <ul>
-                {bossKills.map((kills) =>
-                  <Progress
-                    key={kills.id}
-                    progress={kills}
-                  />
-                )}
-              </ul>
-            </div>
-            <div className={styles.bossKills}>
-              <ul>
-                <li>Normal kills</li>
-                <li>Normal kills</li>
-                <li>Normal kills</li>
-              </ul>
-            </div>
+            <table className={styles.tableDetails}>
+              <tbody>
+                <tr>
+                  <th className={styles.tableHead}>{_.last(profile.progression.raids).name}</th>
+                  <th className={cx(styles.tableHead, styles.tableCenter)}>Progress</th>
+                  <th className={cx(styles.tableHead, styles.tableCenter)}>Boss Kills</th>
+                </tr>
+             </tbody>
+             <tbody>
+               {bossKills.map((kills) =>
+                 <BossCard
+                   key={kills.id}
+                   kills={kills}
+                 />
+               )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
