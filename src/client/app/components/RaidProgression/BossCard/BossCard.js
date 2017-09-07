@@ -53,7 +53,7 @@ class BossCard extends React.Component {
         <tr>
           <td>
             <img className={styles.bossPic} src={this.state.bossImageUrl}/>
-            {kills.name}
+            <span className={styles.name}>{kills.name}</span>
           </td>
           <td className={styles.tableCenter}>
             {timeStamp}

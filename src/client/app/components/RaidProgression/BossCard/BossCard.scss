@@ -33,4 +33,12 @@
 
 td {
   padding: 5px;
+  position: relative;
+}
+
+.name {
+  padding-left: 10px;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
 }
