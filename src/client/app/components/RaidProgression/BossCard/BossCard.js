@@ -34,7 +34,6 @@ class BossCard extends React.Component {
   }
 
   getCreatureDisplayImage () {
-    console.log('get creature', this.props.kills);
     axios.get('https://us.api.battle.net/wow/boss/' + this.props.kills.id + '?locale=en_US&apikey=' + wowKey)
       .then((res) => {
         const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
@@ -52,7 +51,7 @@ class BossCard extends React.Component {
       let timeStamp = moment(kills.normalTimestamp).fromNow();
 
       _.forEach(kills, (kill) => {
-        console.log(this.props.kills.id)
+        console.log(this.props.kills[0].id)
       });
 
       return (

@@ -1,15 +1,16 @@
 .bg-white {
   width: 100%;
-  background-color: white;
-  padding-top: 50px;
-  height: auto;
+  background-color: #282828;
+  height: 100%;
 }
 
 .centralized {
   width: 800px;
   margin: 0 auto;
   height: 100%;
-  background-color: #4f4b49;
+  border-right: 1px solid #2a2a2a;
+  border-left: 1px solid #2a2a2a;
+  background-color: #3a3a3a;
 }
 
 .searchContainer {
