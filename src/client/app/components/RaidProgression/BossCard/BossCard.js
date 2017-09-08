@@ -47,17 +47,23 @@ class BossCard extends React.Component {
 
     render() {
       const { kills } = this.props;
+      // console.log('boss card', this.props.kills[0].id);
       let timeStamp = moment(kills.normalTimestamp).fromNow();
+
+      _.forEach(kills, (kill) => {
+        console.log(this.props.kills[0].id)
+      });
 
       return (
         <tr>
           <td>
-            {kills.name}
+            <img className={styles.bossPic} src={this.state.bossImageUrl}/>
+            <span className={styles.name}>{kills.name}</span>
           </td>
-          <td className={styles.bossProgress}>
+          <td className={styles.tableCenter}>
             {timeStamp}
           </td>
-          <td className={styles.bossKills}>
+          <td className={styles.tableCenter}>
             {kills.normalKills}
           </td>
         </tr>
