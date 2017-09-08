@@ -4,10 +4,8 @@ import cx from 'classnames';
 import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
 import Progress from './Progress/Progress';
-<<<<<<< HEAD
-=======
 // import BossKills from './BossKills/BossKills';
->>>>>>> e444319c34c6b31acaf5de415b8a39803c78e45d
+
 
 class RaidProgression extends React.Component {
   constructor(props) {
