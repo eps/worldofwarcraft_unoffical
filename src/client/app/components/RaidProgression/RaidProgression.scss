@@ -18,11 +18,13 @@ ul {
 }
 
 .table-details {
-  color: #b54747;
+  color: #FFF;
   width: 100%;
   .table-head {
+    color: #039300;
     width: 15rem;
     text-align: left;
+    border-bottom: 1px solid #2a2a2a;
   }
   .table-center {
     text-align: center;

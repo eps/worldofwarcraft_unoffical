@@ -3,7 +3,7 @@
   width: 100%;
   margin-top: 60px;
   height: 100px;
-  background-color: black;
+  background-color: #000;
 }
 
 .characterInfo {
@@ -17,8 +17,12 @@
     padding: 5px;
     font-size: 13px;
   }
+  .charName {
+    padding-top: 5px;
+    font-size: 25px;
+    color: #039300;
+  }
 }
-
 
 .avatarContainer {
   width: 100px;

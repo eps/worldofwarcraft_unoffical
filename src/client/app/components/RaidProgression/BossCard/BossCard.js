@@ -54,10 +54,10 @@ class BossCard extends React.Component {
           <td>
             {kills.name}
           </td>
-          <td>
+          <td className={styles.bossProgress}>
             {timeStamp}
           </td>
-          <td>
+          <td className={styles.bossKills}>
             {kills.normalKills}
           </td>
         </tr>

@@ -32,7 +32,7 @@ class CharacterInfo extends React.Component {
             />
           </div>
           <div className={styles.characterInfo}>
-            <div className={styles.charText}>{profile[0].name}</div>
+            <div className={styles.charName}>{profile[0].name}</div>
             <div className={styles.charText}>&lt;{profile[0].guild.name}&gt;</div>
             <div className={styles.charText}>{profile[0].level} - {profile[0].realm}</div>
           </div>
