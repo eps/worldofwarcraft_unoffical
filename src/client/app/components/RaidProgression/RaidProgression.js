@@ -46,7 +46,16 @@ class RaidProgression extends React.Component {
              </tbody>
              <tbody>
                 <th><span onClick={this.handleSubmit}>Normal</span></th>
-                { this.state.showMe && <BossCard kills={bossKills}/> }
+                { this.state.showMe &&
+                  <div>
+                    {_.map(bossKills, (kills) =>
+                      <BossCard
+                        key={kills.id}
+                        kills={kills}
+                      />
+                    )}
+                  </div>
+                }
               </tbody>
             </table>
           </div>
