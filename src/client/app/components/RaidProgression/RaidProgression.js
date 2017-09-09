@@ -5,6 +5,8 @@ import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
 import Progress from './Progress/Progress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
+import FaCaretDown from 'react-icons/lib/fa/caret-down';
+
 // import BossKills from './BossKills/BossKills';
 
 
@@ -20,7 +22,6 @@ class RaidProgression extends React.Component {
 
   handleSubmit(){
     this.setState({showMe: !this.state.showMe});
-
   }
 
   // {_.map(bossKills, (kills) =>
@@ -50,7 +51,7 @@ class RaidProgression extends React.Component {
                   <td>
                     <span onClick={this.handleSubmit}>
                       Normal
-                      <FaCaretRight />
+                      { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
                 </tr>
