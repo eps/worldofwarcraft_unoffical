@@ -43,20 +43,22 @@ class RaidProgression extends React.Component {
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Progress</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Boss Kills</th>
                 </tr>
-             </tbody>
-             <tbody>
-                <th><span onClick={this.handleSubmit}>Normal</span></th>
-                { this.state.showMe &&
-                  <div>
-                    {_.map(bossKills, (kills) =>
-                      <BossCard
-                        key={kills.id}
-                        kills={kills}
-                      />
-                    )}
-                  </div>
-                }
               </tbody>
+              <tbody>
+                <tr>
+                  <td><span onClick={this.handleSubmit}>Normal</span></td>
+                </tr>
+              </tbody>
+              { this.state.showMe &&
+                <tbody>
+                  {_.map(bossKills, (kills) =>
+                    <BossCard
+                      key={kills.id}
+                      kills={kills}
+                    />
+                  )}
+                </tbody>
+              }
             </table>
           </div>
         </div>
