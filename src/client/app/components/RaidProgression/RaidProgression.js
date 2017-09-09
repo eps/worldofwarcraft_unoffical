@@ -4,10 +4,8 @@ import cx from 'classnames';
 import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
 import Progress from './Progress/Progress';
-<<<<<<< HEAD
-=======
 // import BossKills from './BossKills/BossKills';
->>>>>>> e444319c34c6b31acaf5de415b8a39803c78e45d
+
 
 class RaidProgression extends React.Component {
   constructor(props) {
@@ -45,11 +43,22 @@ class RaidProgression extends React.Component {
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Progress</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Boss Kills</th>
                 </tr>
-             </tbody>
-             <tbody>
-                <th><span onClick={this.handleSubmit}>Normal</span></th>
-                { this.state.showMe && <BossCard kills={bossKills}/> }
               </tbody>
+              <tbody>
+                <tr>
+                  <td><span onClick={this.handleSubmit}>Normal</span></td>
+                </tr>
+              </tbody>
+              { this.state.showMe &&
+                <tbody>
+                  {_.map(bossKills, (kills) =>
+                    <BossCard
+                      key={kills.id}
+                      kills={kills}
+                    />
+                  )}
+                </tbody>
+              }
             </table>
           </div>
         </div>
