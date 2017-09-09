@@ -35,7 +35,6 @@ class CharacterForm extends React.Component {
           this.setState({
             realmList: realmNames
           });
-          console.log('working', realmNames);
         }).catch((err) => {
           console.log(err);
         });

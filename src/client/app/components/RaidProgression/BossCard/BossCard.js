@@ -33,7 +33,7 @@ class BossCard extends React.Component {
    this.getCreatureDisplayImage();
   }
 
-  getCreatureDisplayImage () {
+  getCreatureDisplayImage() {
     axios.get('https://us.api.battle.net/wow/boss/' + this.props.kills.id + '?locale=en_US&apikey=' + wowKey)
       .then((res) => {
         const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
@@ -42,25 +42,26 @@ class BossCard extends React.Component {
         });
       }).catch((err) => {
         console.log(err);
-      });
-    }
+    });
+  }
 
-    render() {
-      const { kills } = this.props;
-      let timeStamp = moment(kills.normalTimestamp).fromNow();
+  render() {
+    const { kills } = this.props;
+    let timeStamp = moment(kills.normalTimestamp).fromNow();
 
-      return (
-        <tr>
-          <td>
-            {kills.name}
-          </td>
-          <td>
-            {timeStamp}
-          </td>
-          <td>
-            {kills.normalKills}
-          </td>
-        </tr>
+    return (
+      <tr>
+        <td>
+          <img className={styles.bossPic} src={this.state.bossImageUrl}/>
+          <span className={styles.name}>{kills.name}</span>
+        </td>
+        <td className={styles.tableCenter}>
+          {timeStamp}
+        </td>
+        <td className={styles.tableCenter}>
+          {kills.normalKills}
+        </td>
+      </tr>
     );
   }
 }
