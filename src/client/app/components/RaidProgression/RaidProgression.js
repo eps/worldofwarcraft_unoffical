@@ -3,6 +3,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
+import HeroicCard from './HeroicCard/HeroicCard';
 import Progress from './Progress/Progress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
@@ -14,14 +15,20 @@ class RaidProgression extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMe: false
+      showMe: false,
+      showHeroic: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitHeroic = this.handleSubmitHeroic.bind(this);
   };
 
 
   handleSubmit(){
     this.setState({showMe: !this.state.showMe});
+  }
+
+  handleSubmitHeroic(){
+    this.setState({showHeroic: !this.state.showHeroic});
   }
 
   // {_.map(bossKills, (kills) =>
@@ -60,6 +67,26 @@ class RaidProgression extends React.Component {
                 <tbody>
                   {_.map(bossKills, (kills) =>
                     <BossCard
+                      key={kills.id}
+                      kills={kills}
+                    />
+                  )}
+                </tbody>
+              }
+              <tbody>
+                <tr>
+                  <td>
+                    <span onClick={this.handleSubmitHeroic}>
+                      Heroic
+                      { this.state.showHeroic ? <FaCaretDown /> : <FaCaretRight /> }
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+              { this.state.showHeroic &&
+                <tbody>
+                  {_.map(bossKills, (kills) =>
+                    <HeroicCard
                       key={kills.id}
                       kills={kills}
                     />
