@@ -5,9 +5,7 @@ import styles from './RaidProgression.scss';
 import NormalCard from './NormalCard/NormalCard';
 import HeroicCard from './HeroicCard/HeroicCard';
 import MythicCard from './MythicCard/MythicCard';
-import NormalProgress from './Progress/NormalProgress/NormalProgress';
-import HeroicProgress from './Progress/HeroicProgress/HeroicProgress';
-import MythicProgress from './Progress/MythicProgress/MythicProgress';
+import Progress from './Progress/Progress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
@@ -80,7 +78,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <NormalProgress progress={bossKills}/>
+                  <Progress difficulty={normal}/>
                   </td>
                   <td></td>
                 </tr>
@@ -104,7 +102,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <HeroicProgress progress={bossKills}/>
+                  <Progress difficulty={heroic} />
                   </td>
                   <td></td>
                 </tr>
@@ -128,7 +126,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <MythicProgress progress={bossKills}/>
+                    <Progress difficulty={mythic} />
                   </td>
                   <td></td>
                 </tr>
