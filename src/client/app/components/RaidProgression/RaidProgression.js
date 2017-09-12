@@ -53,13 +53,13 @@ class RaidProgression extends React.Component {
         <div className={styles.content}>
           <div className={styles.detail}>
             <table className={styles.tableDetails}>
-              <tbody>
+              <thead>
                 <tr>
                   <th className={styles.tableHead}>{_.last(profile.progression.raids).name}</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Progress</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Boss Kills</th>
                 </tr>
-              </tbody>
+              </thead>
               <tbody>
                 <tr>
                   <td>
@@ -68,6 +68,7 @@ class RaidProgression extends React.Component {
                       { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
+                  <td></td><td></td>
                 </tr>
               </tbody>
               { this.state.showMe &&
@@ -88,6 +89,7 @@ class RaidProgression extends React.Component {
                       { this.state.showHeroic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
+                  <td></td><td></td>
                 </tr>
               </tbody>
               { this.state.showHeroic &&
@@ -108,6 +110,7 @@ class RaidProgression extends React.Component {
                       { this.state.showMythic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
+                  <td></td><td></td>
                 </tr>
               </tbody>
               { this.state.showMythic &&
