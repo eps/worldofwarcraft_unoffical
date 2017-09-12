@@ -6,21 +6,6 @@ import styles from './HeroicCard.scss';
 
 const wowKey = config.WOW_API_KEY;
 
-// <div className={styles.NormalCard}>
-//   <div className={styles.row}>
-//     <h3 className={styles.bossName}>{kills.name}</h3>
-//     <div className={styles.row}>
-//       <img className={styles.bossPic} src={this.state.bossImageUrl}/>
-//       <div className={styles.cardText}>
-//         <li>LFR Kills: {kills.lfrKills}</li>
-//         <li>Normal Kills: {kills.normalKills}</li>
-//         <li>Heroic Kills: {kills.heroicKills}</li>
-//         <li>Mythic Kills: {kills.mythicKills}</li>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-
 class HeroicCard extends React.Component {
   constructor(props) {
     super(props)
