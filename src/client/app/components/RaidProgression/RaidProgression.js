@@ -5,7 +5,9 @@ import styles from './RaidProgression.scss';
 import BossCard from './BossCard/BossCard';
 import HeroicCard from './HeroicCard/HeroicCard';
 import MythicCard from './MythicCard/MythicCard';
-import Progress from './Progress/Progress';
+import NormalProgress from './Progress/NormalProgress/NormalProgress';
+import HeroicProgress from './Progress/HeroicProgress/HeroicProgress';
+import MythicProgress from './Progress/MythicProgress/MythicProgress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
@@ -37,12 +39,6 @@ class RaidProgression extends React.Component {
   handleSubmitMythic(){
     this.setState({showMythic: !this.state.showMythic});
   }
-
-  // {_.map(bossKills, (kills) =>
-  //   <BossCard
-  //     key={kills.id}
-  //     kills={kills}
-  //   />
 
   render() {
     const { profile } = this.props;
@@ -84,7 +80,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <span className={styles.prog}>{normal}/9 N</span>
+                    <NormalProgress progress={bossKills}/>
                   </td>
                   <td></td>
                 </tr>
@@ -108,7 +104,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <span className={styles.prog}>{heroic}/9 H</span>
+                    <HeroicProgress progress={bossKills}/>
                   </td>
                   <td></td>
                 </tr>
@@ -132,7 +128,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    <span className={styles.prog}>{mythic}/9 M</span>
+                    <MythicProgress progress={bossKills}/>
                   </td>
                   <td></td>
                 </tr>
