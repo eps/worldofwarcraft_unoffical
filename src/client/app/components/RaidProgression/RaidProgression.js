@@ -47,6 +47,21 @@ class RaidProgression extends React.Component {
   render() {
     const { profile } = this.props;
     const bossKills = _.last(profile.progression.raids).bosses;
+    let normal = 0;
+    let heroic = 0;
+    let mythic = 0;
+
+    _.forEach(bossKills, (key) => {
+      if (key.normalKills > 0) {
+        normal++;
+      }
+      if (key.heroicKills > 0) {
+        heroic++;
+      }
+      if (key.mythicKills > 0) {
+        mythic++;
+      }
+    });
 
     return (
       <div className={styles.raid}>
@@ -68,7 +83,10 @@ class RaidProgression extends React.Component {
                       { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
-                  <td></td><td></td>
+                  <td className={styles.tableCenter}>
+                    {normal}/9
+                  </td>
+                  <td></td>
                 </tr>
               </tbody>
               { this.state.showMe &&
@@ -89,7 +107,10 @@ class RaidProgression extends React.Component {
                       { this.state.showHeroic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
-                  <td></td><td></td>
+                  <td className={styles.tableCenter}>
+                    {heroic}/9
+                  </td>
+                  <td></td>
                 </tr>
               </tbody>
               { this.state.showHeroic &&
@@ -110,7 +131,10 @@ class RaidProgression extends React.Component {
                       { this.state.showMythic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
                   </td>
-                  <td></td><td></td>
+                  <td className={styles.tableCenter}>
+                    {mythic}/9
+                  </td>
+                  <td></td>
                 </tr>
               </tbody>
               { this.state.showMythic &&
