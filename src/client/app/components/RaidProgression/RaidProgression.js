@@ -84,7 +84,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    {normal}/9
+                    <span className={styles.prog}>{normal}/9 N</span>
                   </td>
                   <td></td>
                 </tr>
@@ -108,7 +108,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    {heroic}/9
+                    <span className={styles.prog}>{heroic}/9 H</span>
                   </td>
                   <td></td>
                 </tr>
@@ -132,7 +132,7 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                    {mythic}/9
+                    <span className={styles.prog}>{mythic}/9 M</span>
                   </td>
                   <td></td>
                 </tr>
