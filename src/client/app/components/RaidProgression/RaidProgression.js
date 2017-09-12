@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import React from 'react';
 import cx from 'classnames';
 import styles from './RaidProgression.scss';
-import BossCard from './BossCard/BossCard';
+import NormalCard from './NormalCard/NormalCard';
 import HeroicCard from './HeroicCard/HeroicCard';
 import MythicCard from './MythicCard/MythicCard';
 import NormalProgress from './Progress/NormalProgress/NormalProgress';
@@ -88,7 +88,7 @@ class RaidProgression extends React.Component {
               { this.state.showMe &&
                 <tbody>
                   {_.map(bossKills, (kills) =>
-                    <BossCard
+                    <NormalCard
                       key={kills.id}
                       kills={kills}
                     />

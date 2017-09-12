@@ -2,26 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import config from '../../../../../config/config.js';
-import styles from './BossCard.scss';
+import styles from './NormalCard.scss';
 
 const wowKey = config.WOW_API_KEY;
 
-// <div className={styles.bossCard}>
-//   <div className={styles.row}>
-//     <h3 className={styles.bossName}>{kills.name}</h3>
-//     <div className={styles.row}>
-//       <img className={styles.bossPic} src={this.state.bossImageUrl}/>
-//       <div className={styles.cardText}>
-//         <li>LFR Kills: {kills.lfrKills}</li>
-//         <li>Normal Kills: {kills.normalKills}</li>
-//         <li>Heroic Kills: {kills.heroicKills}</li>
-//         <li>Mythic Kills: {kills.mythicKills}</li>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-
-class BossCard extends React.Component {
+class NormalCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -66,4 +51,4 @@ class BossCard extends React.Component {
   }
 }
 
-export default BossCard;
+export default NormalCard;
