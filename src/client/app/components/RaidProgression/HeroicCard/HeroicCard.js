@@ -6,7 +6,7 @@ import styles from './HeroicCard.scss';
 
 const wowKey = config.WOW_API_KEY;
 
-// <div className={styles.bossCard}>
+// <div className={styles.NormalCard}>
 //   <div className={styles.row}>
 //     <h3 className={styles.bossName}>{kills.name}</h3>
 //     <div className={styles.row}>
