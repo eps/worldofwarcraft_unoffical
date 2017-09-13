@@ -10,7 +10,6 @@ import Progress from './Progress/Progress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
-
 class RaidProgression extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,6 @@ class RaidProgression extends React.Component {
     this.handleSubmitHeroic = this.handleSubmitHeroic.bind(this);
     this.handleSubmitMythic = this.handleSubmitMythic.bind(this);
   };
-
 
   handleSubmit(){
     this.setState({showMe: !this.state.showMe});
@@ -85,7 +83,7 @@ class RaidProgression extends React.Component {
                   <td className={styles.tableCenter}>
                     <Progress difficulty={normal}/>
                   </td>
-                  <td>
+                  <td className={styles.tableCenter}>
                     <BossKills total={normalTotal}/>
                   </td>
                 </tr>
@@ -111,7 +109,7 @@ class RaidProgression extends React.Component {
                   <td className={styles.tableCenter}>
                     <Progress difficulty={heroic} />
                   </td>
-                  <td>
+                  <td className={styles.tableCenter}>
                     <BossKills total={heroicTotal} />
                   </td>
                 </tr>
@@ -137,7 +135,7 @@ class RaidProgression extends React.Component {
                   <td className={styles.tableCenter}>
                     <Progress difficulty={mythic} />
                   </td>
-                  <td>
+                  <td className={styles.tableCenter}>
                     <BossKills total={mythicTotal} />
                   </td>
                 </tr>

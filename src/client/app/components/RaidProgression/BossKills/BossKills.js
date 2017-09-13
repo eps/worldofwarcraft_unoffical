@@ -5,7 +5,7 @@ class BossKills extends React.Component {
 
   render() {
     return (
-      <span>total: {this.props.total}</span>
+      <span className={styles.bossKills}>{this.props.total}</span>
     )
   }
 }
