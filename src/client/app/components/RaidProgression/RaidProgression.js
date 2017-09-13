@@ -2,14 +2,13 @@ import * as _ from 'lodash';
 import React from 'react';
 import cx from 'classnames';
 import styles from './RaidProgression.scss';
+import BossKills from './BossKills/BossKills';
 import NormalCard from './NormalCard/NormalCard';
 import HeroicCard from './HeroicCard/HeroicCard';
 import MythicCard from './MythicCard/MythicCard';
 import Progress from './Progress/Progress';
 import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
-
-// import BossKills from './BossKills/BossKills';
 
 
 class RaidProgression extends React.Component {
@@ -44,15 +43,21 @@ class RaidProgression extends React.Component {
     let normal = 0;
     let heroic = 0;
     let mythic = 0;
+    let normalTotal = 0;
+    let heroicTotal = 0;
+    let mythicTotal = 0;
 
     _.forEach(bossKills, (key) => {
       if (key.normalKills > 0) {
+        normalTotal+=key.normalKills;
         normal++;
       }
       if (key.heroicKills > 0) {
+        heroicTotal+=key.heroicKills;
         heroic++;
       }
       if (key.mythicKills > 0) {
+        mythicTotal+=key.mythicKills;
         mythic++;
       }
     });
@@ -78,9 +83,11 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                  <Progress difficulty={normal}/>
+                    <Progress difficulty={normal}/>
                   </td>
-                  <td></td>
+                  <td>
+                    <BossKills total={normalTotal}/>
+                  </td>
                 </tr>
               </tbody>
               { this.state.showMe &&
@@ -102,9 +109,11 @@ class RaidProgression extends React.Component {
                     </span>
                   </td>
                   <td className={styles.tableCenter}>
-                  <Progress difficulty={heroic} />
+                    <Progress difficulty={heroic} />
                   </td>
-                  <td></td>
+                  <td>
+                    <BossKills total={heroicTotal} />
+                  </td>
                 </tr>
               </tbody>
               { this.state.showHeroic &&
@@ -128,7 +137,9 @@ class RaidProgression extends React.Component {
                   <td className={styles.tableCenter}>
                     <Progress difficulty={mythic} />
                   </td>
-                  <td></td>
+                  <td>
+                    <BossKills total={mythicTotal} />
+                  </td>
                 </tr>
               </tbody>
               { this.state.showMythic &&
