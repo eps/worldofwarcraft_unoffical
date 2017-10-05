@@ -16,7 +16,6 @@ class CharacterForm extends React.Component {
       characterName: '',
       realm: '',
       realmList: [],
-      submitted: false
     };
     this.getRealmList();
     this.handleChange = this.handleChange.bind(this);
@@ -77,8 +76,6 @@ class CharacterForm extends React.Component {
       selectBox.add(option);
     });
 
-    // <Button default primary fluid type="submit">Search</Button>
-
     return (
       <div className={styles.bgWhite}>
         <div className={styles.centralized}>
@@ -100,10 +97,10 @@ class CharacterForm extends React.Component {
                   <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   </select>
                 </div>
-                <Button default primary fluid type="submit" style={{ visibility: 'hidden' }}>Search</Button>
+                <input type="submit" style={{visibility: 'hidden'}}/>
               </form>
             </div>
-          { this.state.submitted && <CharacterInfo profile={this.state.profile}/> }
+          { this.state.submitted && <CharacterInfo profile={this.state.profile} /> }
         </div>
       </div>
     );
