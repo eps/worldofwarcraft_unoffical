@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className={styles.app}>
         <div className={styles.header}>
-          <h2>Welcome to Now</h2>
+          <h2>World of Warcraft Character</h2>
         </div>
         <CharacterForm />
       </div>

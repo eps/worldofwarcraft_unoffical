@@ -1,23 +1,13 @@
+@import '../../mixins/variables';
+
 .app {
   text-align: center;
-  background: #ccc;
-}
-
-.logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  background: $purple;
+  font-family: $defaultFont;
 }
 
 .header {
-  text-align: center;
-  background-color: #535353;
   height: 100px;
   padding-top: 20px;
   color: white;
-}
-
-
-@keyframes logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
