@@ -12,10 +12,8 @@ class CharacterInfo extends React.Component {
     const link = "http://render-us.worldofwarcraft.com/character/";
     const newAvatar = profile.thumbnail;
     const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
-    console.log('character info', profile);
-
     const isAlliance = profile.faction;
-    console.log(isAlliance);
+    
     let faction = null;
     if (isAlliance > 0) {
       faction = <div className={styles.horde}>{profile.name}</div>;
@@ -25,14 +23,10 @@ class CharacterInfo extends React.Component {
 
     let guildName = null;
     if (guild === '') {
-      guildName = <div style={pStyle}></div>
+      guildName = <div style={{visibility: 'hidden'}}></div>
     } else {
       guildName = <span>&lt;{guild.name}&gt;</span>
     }
-    
-    const pStyle = {
-      visibility: 'hidden',
-    };
 
     return (
       <div>
