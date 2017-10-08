@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CharacterInfo.scss';
+import CharacterClass from './CharacterClass/CharacterClass';
 import RaidProgression from '../RaidProgression/RaidProgression';
 
 class CharacterInfo extends React.Component {
@@ -13,7 +14,8 @@ class CharacterInfo extends React.Component {
     const newAvatar = profile.thumbnail;
     const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
     const isAlliance = profile.faction;
-    
+    console.log(profile);
+
     let faction = null;
     if (isAlliance > 0) {
       faction = <div className={styles.horde}>{profile.name}</div>;
@@ -39,7 +41,10 @@ class CharacterInfo extends React.Component {
             <div className={styles.charText}>
               {guildName}
             </div>
-            <div className={styles.charText}>{profile.level} - {profile.realm}</div>
+            <div className={styles.charText}>{profile.realm}</div>
+            <div className={styles.charText}>
+              <CharacterClass classes={profile.class} />
+            </div>
           </div>
           <div className={styles.profileLinks}>
             <a href={armory} title="Armory Profile">
