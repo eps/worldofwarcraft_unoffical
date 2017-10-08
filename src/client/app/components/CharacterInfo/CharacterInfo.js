@@ -23,6 +23,17 @@ class CharacterInfo extends React.Component {
       faction = <div className={styles.alliance}>{profile.name}</div>;
     }
 
+    let guildName = null;
+    if (guild === '') {
+      guildName = <div style={pStyle}></div>
+    } else {
+      guildName = <span>&lt;{guild.name}&gt;</span>
+    }
+    
+    const pStyle = {
+      visibility: 'hidden',
+    };
+
     return (
       <div>
         <div className={styles.characterContainer}>
@@ -31,7 +42,9 @@ class CharacterInfo extends React.Component {
           </div>
           <div className={styles.characterInfo}>
             {faction}
-            <div className={styles.charText}>&lt;{guild.name}&gt;</div>
+            <div className={styles.charText}>
+              {guildName}
+            </div>
             <div className={styles.charText}>{profile.level} - {profile.realm}</div>
           </div>
           <div className={styles.profileLinks}>

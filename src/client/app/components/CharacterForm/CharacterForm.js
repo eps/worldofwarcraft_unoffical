@@ -66,7 +66,7 @@ class CharacterForm extends React.Component {
     ]).then(axios.spread((profile, guild, progress) => {
       this.setState({
         profile: profile.data,
-        guild: guild.data.guild,
+        guild: guild.data.guild || '',
         progress: progress.data.progression,
         submitted: true
       });
