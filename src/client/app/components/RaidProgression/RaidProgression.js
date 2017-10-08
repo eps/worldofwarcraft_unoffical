@@ -36,8 +36,8 @@ class RaidProgression extends React.Component {
   }
 
   render() {
-    const { profile } = this.props;
-    const bossKills = _.last(profile.progression.raids).bosses;
+    const { progress } = this.props;
+    const bossKills = _.last(progress.raids).bosses;
     let normal = 0;
     let heroic = 0;
     let mythic = 0;
@@ -67,7 +67,7 @@ class RaidProgression extends React.Component {
             <table className={styles.tableDetails}>
               <thead>
                 <tr>
-                  <th className={styles.tableHead}>{_.last(profile.progression.raids).name}</th>
+                  <th className={styles.tableHead}>{_.last(progress.raids).name}</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Progress</th>
                   <th className={cx(styles.tableHead, styles.tableCenter)}>Boss Kills</th>
                 </tr>

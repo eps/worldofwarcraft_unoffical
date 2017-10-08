@@ -5,30 +5,23 @@ import RaidProgression from '../RaidProgression/RaidProgression';
 class CharacterInfo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      faction: false
-    };
   }
 
   render() {
-    const { profile } = this.props;
+    const { profile, guild, progress } = this.props;
     const link = "http://render-us.worldofwarcraft.com/character/";
-    const newAvatar = profile[0].thumbnail;
-    const armory = "https://us.battle.net/wow/character/"+profile[0].realm+"/"+profile[0].name+"/simple";
+    const newAvatar = profile.thumbnail;
+    const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
     console.log('character info', profile);
 
-    const isAlliance = profile[0].faction;
+    const isAlliance = profile.faction;
     console.log(isAlliance);
     let faction = null;
     if (isAlliance > 0) {
-      faction = <div className={styles.horde}>{profile[0].name}</div>;
+      faction = <div className={styles.horde}>{profile.name}</div>;
     } else {
-      faction = <div className={styles.alliance}>{profile[0].name}</div>;
+      faction = <div className={styles.alliance}>{profile.name}</div>;
     }
-
-
-
-
 
     return (
       <div>
@@ -38,8 +31,8 @@ class CharacterInfo extends React.Component {
           </div>
           <div className={styles.characterInfo}>
             {faction}
-            <div className={styles.charText}>&lt;{profile[0].guild.name}&gt;</div>
-            <div className={styles.charText}>{profile[0].level} - {profile[0].realm}</div>
+            <div className={styles.charText}>&lt;{guild.name}&gt;</div>
+            <div className={styles.charText}>{profile.level} - {profile.realm}</div>
           </div>
           <div className={styles.profileLinks}>
             <a href={armory} title="Armory Profile">
@@ -47,7 +40,7 @@ class CharacterInfo extends React.Component {
             </a>
           </div>
         </div>
-        <RaidProgression profile={this.props.profile[1]} />
+        <RaidProgression progress={this.props.progress} />
       </div>
     )
   };
