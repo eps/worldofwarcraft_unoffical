@@ -5,45 +5,45 @@ class CharacterClass extends React.Component {
     let characterClass;
     let classes = this.props.classes;
     switch(classes) {
-        case 1:
-          characterClass = "Warrior";
-          break;
-        case 2:
-          characterClass = "Paladin";
-          break;
-        case 3:
-          characterClass = "Hunter";
-          break;
-        case 4:
-          characterClass = "Rogue";
-          break;
-        case 5:
-          characterClass = "Priest";
-          break;
-        case 6:
-          characterClass = "Death Knight";
-          break;
-        case 7:
-          characterClass = "Shaman";
-          break;
-        case 8:
-          characterClass = "Mage";
-          break;
-        case 9:
-          characterClass = "Warlock";
-          break;
-        case 10:
-          characterClass = "Monk";
-          break;
-        case 11:
-          characterClass = "Druid";
-          break;
-        case 12:
-          characterClass = "Demon Hunter";
-          break;
+      case 1:
+        characterClass = "Warrior";
+        break;
+      case 2:
+        characterClass = "Paladin";
+        break;
+      case 3:
+        characterClass = "Hunter";
+        break;
+      case 4:
+        characterClass = "Rogue";
+        break;
+      case 5:
+        characterClass = "Priest";
+        break;
+      case 6:
+        characterClass = "Death Knight";
+        break;
+      case 7:
+        characterClass = "Shaman";
+        break;
+      case 8:
+        characterClass = "Mage";
+        break;
+      case 9:
+        characterClass = "Warlock";
+        break;
+      case 10:
+        characterClass = "Monk";
+        break;
+      case 11:
+        characterClass = "Druid";
+        break;
+      case 12:
+        characterClass = "Demon Hunter";
+        break;
     }
 
-    let styling;
+    let classColor;
     switch(characterClass) {
       case "Warrior":
         classColor = <div style={{color: '#C79C6E'}}>{characterClass}</div>;

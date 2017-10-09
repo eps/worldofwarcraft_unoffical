@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CharacterInfo.scss';
 import CharacterClass from './CharacterClass/CharacterClass';
+import CharacterRace from './CharacterRace/CharacterRace';
 import RaidProgression from '../RaidProgression/RaidProgression';
 
 class CharacterInfo extends React.Component {
@@ -43,7 +44,7 @@ class CharacterInfo extends React.Component {
             </div>
             <div className={styles.charText}>{profile.realm}</div>
             <div className={styles.charText}>
-              <CharacterClass classes={profile.class} />
+              <CharacterRace race={profile.race} /><CharacterClass classes={profile.class} />
             </div>
           </div>
           <div className={styles.profileLinks}>
