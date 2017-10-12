@@ -1,3 +1,5 @@
+@import "../../mixins/variables";
+
 .characterContainer {
   float: left;
   width: 100%;
@@ -7,20 +9,21 @@
 }
 
 .characterInfo {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $defaultFont;
   text-align: left;
   color: white;
   position: relative;
   float: left;
   margin-left: 10px;
+  padding: 5px;
   .charText {
-    padding: 5px;
-    font-size: 16px;
+    padding: 5px 0px 5px;
   }
-  .charName {
-    padding-top: 5px;
-    font-size: 25px;
-    color: #039300;
+  .horde {
+    color: $horde;
+  }
+  .alliance {
+    color: $alliance;
   }
 }
 
@@ -36,4 +39,14 @@
 
 .raidContent {
   float: left;
+}
+
+.profileLinks {
+  padding-top: 10px;
+  width: 100px;
+  float: right;
+    img {
+      width: 24px;
+      height: 24px;
+    }
 }

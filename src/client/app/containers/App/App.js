@@ -6,9 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-        <div className={styles.header}>
-          <h2>Welcome to Now</h2>
-        </div>
+        <div className={styles.header}></div>
         <CharacterForm />
       </div>
     );

@@ -1,6 +1,8 @@
+@import "../../mixins/variables";
+
 .bg-white {
   width: 100%;
-  background-color: #282828;
+  background-color: $purple;
   height: 100%;
 }
 
@@ -8,9 +10,7 @@
   width: 800px;
   margin: 0 auto;
   height: 100%;
-  border-right: 1px solid #2a2a2a;
-  border-left: 1px solid #2a2a2a;
-  background-color: #3a3a3a;
+  background-color: $purple;
 }
 
 .searchContainer {
@@ -19,13 +19,13 @@
   float: left;
   position: relative;
   input {
-    background-color: white;
+    background-color: $white;
     width: 50%;
     height: 100%;
     padding-left: 24px;
   }
   .searchIcon {
-    color: #aaa;
+    color: $darkerGrey;
     cursor: pointer;
     position: absolute;
     left: 6px;
@@ -43,9 +43,8 @@
   }
 }
 .searchInput {
-  border-color: #31575a;
   font-size: 12px;
-  border: 1px solid #d8dde6;
+  border: 1px solid $darkerGrey;
   border-radius: 4px;
   padding: 0px 12px 0 9px;
 }

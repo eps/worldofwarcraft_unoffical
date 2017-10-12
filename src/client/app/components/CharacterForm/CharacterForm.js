@@ -16,7 +16,6 @@ class CharacterForm extends React.Component {
       characterName: '',
       realm: '',
       realmList: [],
-      submitted: false
     };
     this.getRealmList();
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +24,9 @@ class CharacterForm extends React.Component {
   }
 
   handleChange(e) {
+    if (e.key === 'Enter') {
+      this.handleSubmit()
+    }
     this.setState({[e.target.name]: e.target.value});
   }
 
@@ -40,17 +42,32 @@ class CharacterForm extends React.Component {
         });
    }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
     console.log('realm is', this.state.realm);
+    console.log('character ', this.state.characterName);
+
+    const getCharInfo = () => {
+       return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey);
+    }
+
+    const getCharGuild = () => {
+       return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey);
+    }
+
+    const getCharProgress = () => {
+      return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=progression&locale=en_US&apikey=' + wowKey);
+    }
 
     axios.all([
-      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=guild&locale=en_US&apikey=' + wowKey),
-      axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=progression&locale=en_US&apikey=' + wowKey)
-    ]).then(axios.spread((guild,progression) => {
-      let profile = _.concat(guild.data, progression.data);
+      getCharInfo(),
+      getCharGuild(),
+      getCharProgress()
+    ]).then(axios.spread((profile, guild, progress) => {
       this.setState({
-        profile: profile,
+        profile: profile.data,
+        guild: guild.data.guild || '',
+        progress: progress.data.progression,
         submitted: true
       });
     })).catch((err) => {
@@ -95,10 +112,10 @@ class CharacterForm extends React.Component {
                   <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                   </select>
                 </div>
-                <Button default primary fluid type="submit">Search</Button>
+                <input type="submit" style={{visibility: 'hidden'}}/>
               </form>
             </div>
-          { this.state.submitted && <CharacterInfo profile={this.state.profile}/> }
+          { this.state.submitted && <CharacterInfo profile={this.state.profile} guild={this.state.guild} progress={this.state.progress}/> }
         </div>
       </div>
     );
