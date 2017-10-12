@@ -15,18 +15,14 @@
   position: relative;
   float: left;
   margin-left: 10px;
+  padding: 5px;
   .charText {
-    padding: 5px;
-    font-size: 16px;
+    padding: 5px 0px 5px;
   }
   .horde {
-    padding-top: 5px;
-    font-size: 25px;
     color: $horde;
   }
   .alliance {
-    padding-top: 5px;
-    font-size: 25px;
     color: $alliance;
   }
 }

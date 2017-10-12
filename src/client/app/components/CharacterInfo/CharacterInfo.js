@@ -42,9 +42,12 @@ class CharacterInfo extends React.Component {
             <div className={styles.charText}>
               {guildName}
             </div>
-            <div className={styles.charText}>{profile.realm}</div>
             <div className={styles.charText}>
-              <CharacterRace race={profile.race} /><CharacterClass classes={profile.class} />
+              {profile.realm}
+            </div>
+            <div className={styles.charText}>
+              <CharacterRace race={profile.race} />
+              <CharacterClass classes={profile.class} />
             </div>
           </div>
           <div className={styles.profileLinks}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './CharacterClass.scss';
 
 class CharacterClass extends React.Component {
   render(){
@@ -84,7 +85,7 @@ class CharacterClass extends React.Component {
     }
 
     return (
-      <div>
+      <div className={styles.details}>
         {classColor}
       </div>
     )
