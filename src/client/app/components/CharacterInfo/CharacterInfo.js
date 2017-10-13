@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './CharacterInfo.scss';
 import CharacterClass from './CharacterClass/CharacterClass';
 import CharacterRace from './CharacterRace/CharacterRace';
@@ -6,8 +7,20 @@ import RaidProgression from '../RaidProgression/RaidProgression';
 
 class CharacterInfo extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      isHorde: false
+    };
   }
+  // alliance if faction = 0
+  // horde if faction = 1
+  componentDidMount() {
+    console.log(this.props.profile.faction);
+    if (this.props.profile.faction == 1) {
+      this.setState({ isHorde: true });
+    }
+  }
+
 
   render() {
     const { profile, guild, progress } = this.props;
@@ -35,7 +48,21 @@ class CharacterInfo extends React.Component {
       <div>
         <div className={styles.characterContainer}>
           <div className={styles.avatarContainer}>
-            <img src={`${link}/${newAvatar}`} alt="" />
+            { this.state.isHorde ?
+              <img className={cx(styles, {
+                [styles.thumbnail]: true,
+                [styles.horde]: true,
+              })}
+                src={`${link}/${newAvatar}`} alt=""
+              />
+              :
+              <img className={cx(styles, {
+                [styles.thumbnail]: true,
+                [styles.alliance]: true,
+              })}
+                src={`${link}/${newAvatar}`} alt=""
+              />
+            }
           </div>
           <div className={styles.characterInfo}>
             {faction}
