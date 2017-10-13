@@ -9,6 +9,7 @@ ul {
   width: 100%;
   color: white;
   font-family: $defaultFont;
+  margin-bottom: 50px;
 }
 
 .content {
@@ -37,7 +38,7 @@ ul {
     text-align: center;
   }
   td {
-    font-size: 13px;
+    font-size: 1.3rem;
     padding: 8px;
   }
 }

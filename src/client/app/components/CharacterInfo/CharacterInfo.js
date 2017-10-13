@@ -32,9 +32,19 @@ class CharacterInfo extends React.Component {
 
     let faction = null;
     if (isAlliance > 0) {
-      faction = <div className={styles.horde}>{profile.name}</div>;
+      faction =
+        <div className={cx(styles, {
+            [styles.horde]: true,
+            [styles.proName]: true,
+          })}>{profile.name}
+        </div>;
     } else {
-      faction = <div className={styles.alliance}>{profile.name}</div>;
+      faction =
+        <div className={cx(styles, {
+            [styles.alliance]: true,
+            [styles.proName]: true,
+          })}>{profile.name}
+        </div>;
     }
 
     let guildName = null;
@@ -45,7 +55,7 @@ class CharacterInfo extends React.Component {
     }
 
     return (
-      <div>
+      <div className={styles.centralized}>
         <div className={styles.characterContainer}>
           <div className={styles.avatarContainer}>
             { this.state.isHorde ?

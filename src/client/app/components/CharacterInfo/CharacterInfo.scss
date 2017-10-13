@@ -1,5 +1,10 @@
 @import "../../mixins/variables";
 
+.centralized {
+  width: 800px;
+  margin: 0 auto;
+}
+
 .characterContainer {
   float: left;
   width: 100%;
@@ -9,7 +14,7 @@
 }
 
 .characterInfo {
-  font-family: $defaultFont;
+  font-family: $arialFont;
   text-align: left;
   color: white;
   position: relative;
@@ -18,6 +23,7 @@
   padding: 5px;
   .charText {
     padding: 5px 0px 5px;
+    font-size: 1.1rem;
   }
   .horde {
     color: $horde;
@@ -25,6 +31,11 @@
   .alliance {
     color: $alliance;
   }
+}
+.proName {
+  text-transform: uppercase;
+  font-family: $oswaldFont;
+  font-size: 1.75rem;
 }
 
 .avatarContainer {

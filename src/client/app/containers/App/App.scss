@@ -1,16 +1,17 @@
 @import '../../mixins/variables';
 
 html { font-size: 62.5%; }
-body { font-size: 14px; font-size: 1.4rem; } /* =14px */
-h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
-
+body {
+  font-size: 14px;
+  font-size: 1.4rem; /* =14px */
+  background: $purple;
+  margin: 0;
+}
+h1 {
+  font-size: 24px;
+  font-size: 2.4rem; /* =24px */
+}
 .app {
-  text-align: center;
   background: $purple;
   font-family: $defaultFont;
-}
-
-.header {
-  height: 100px;
-  padding-top: 20px;
 }
