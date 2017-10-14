@@ -1,0 +1,57 @@
+@import "../../mixins/variables";
+
+.centralized {
+  width: 800px;
+  margin: 0 auto;
+  height: 100%;
+  background-color: $purple;
+}
+
+.headerContainer {
+  height: 84px;
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+  position: relative;
+  background-color: $purple;
+}
+
+.searchContainer {
+  height: 40px;
+  width: 800px;
+  float: left;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  input {
+    background-color: $white;
+    width: 50%;
+    height: 100%;
+    padding-left: 24px;
+  }
+  .searchIcon {
+    color: $darkerGrey;
+    cursor: pointer;
+    position: absolute;
+    left: 6px;
+    top: 11px;
+  }
+}
+
+.optionContainer {
+  width: calc(100% - 400px) !important;
+  float: right;
+  position: relative;
+  select {
+    height: 100%;
+    width: 100%;
+  }
+}
+.searchInput {
+  font-size: 12px;
+  border: 1px solid $darkerGrey;
+  border-radius: 4px;
+  padding: 0px 12px 0 9px;
+}
