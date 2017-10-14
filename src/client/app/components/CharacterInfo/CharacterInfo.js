@@ -12,15 +12,23 @@ class CharacterInfo extends React.Component {
       isHorde: false
     };
   }
-  // alliance if faction = 0
-  // horde if faction = 1
-  componentDidMount() {
-    console.log(this.props.profile.faction);
-    if (this.props.profile.faction == 1) {
+
+  componentWillReceiveProps(nextProps) {
+    // update thumbnail box-shadow based on character faction
+    if (nextProps.faction == 1) {
       this.setState({ isHorde: true });
+    } else {
+      this.setState({ isHorde: false });
     }
   }
 
+  componentDidMount() {
+    // alliance if faction = 0
+    // horde if faction = 1
+    if (this.props.faction == 1) {
+      this.setState({ isHorde: true });
+    }
+  }
 
   render() {
     const { profile, guild, progress } = this.props;

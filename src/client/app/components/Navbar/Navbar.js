@@ -17,35 +17,32 @@ class Navbar extends React.Component {
       realm: '',
       realmList: [],
     };
-    this.getRealmList();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRealmChange = this.handleRealmChange.bind(this);
   }
 
   componentDidMount() {
-    this.getRealmList();
+    // get realm list after rendering DOM elements
     console.log('component mounted');
+    axios.get('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=' + wowKey)
+      .then((res) => {
+        const realmNames = _.map(res.data.realms, 'name');
+        this.setState({
+          realmList: realmNames
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
   }
 
   handleChange(e) {
     if (e.key === 'Enter') {
       this.handleSubmit()
     }
+    console.log(e.target.value);
     this.setState({[e.target.name]: e.target.value});
   }
-
-  getRealmList() {
-    axios.get('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=' + wowKey)
-      .then((res) => {
-        const realmNames = _.map(res.data.realms, 'name');
-          this.setState({
-            realmList: realmNames
-          });
-        }).catch((err) => {
-          console.log(err);
-        });
-   }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -121,7 +118,15 @@ class Navbar extends React.Component {
             </form>
           </div>
         </div>
-        { this.state.submitted && <CharacterInfo profile={this.state.profile} guild={this.state.guild} progress={this.state.progress}/> }
+        { this.state.submitted &&
+          <CharacterInfo
+            guild={this.state.guild}
+            faction={this.state.profile.faction}
+            profile={this.state.profile}
+            progress={this.state.progress}
+            realm={this.state.realm}
+          />
+        }
       </div>
     );
   }
