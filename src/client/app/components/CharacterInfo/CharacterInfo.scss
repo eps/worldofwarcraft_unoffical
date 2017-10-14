@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-.characterContainer {
+.character-container {
   float: left;
   width: 100%;
   margin-top: 60px;
@@ -13,7 +13,7 @@
   background-color: #000;
 }
 
-.characterInfo {
+.character-info {
   font-family: $arialFont;
   text-align: left;
   color: white;
@@ -21,7 +21,7 @@
   float: left;
   margin-left: 10px;
   padding: 5px;
-  .charText {
+  .char-text {
     padding: 5px 0px 5px;
     font-size: 1.1rem;
   }
@@ -32,13 +32,13 @@
     color: $alliance;
   }
 }
-.proName {
+.pro-name {
   text-transform: uppercase;
   font-family: $oswaldFont;
   font-size: 1.75rem;
 }
 
-.avatarContainer {
+.avatar-container {
   width: 100px;
   height: 100px;
   float: left;
@@ -62,16 +62,22 @@
   }
 }
 
-.raidContent {
+.raid-content {
   float: left;
 }
 
-.profileLinks {
+.profile-links {
   padding-top: 10px;
   width: 100px;
   float: right;
+  a {
+    display: inline-block;
     img {
       width: 24px;
       height: 24px;
     }
+  }
+  .warcraft-logs {
+    margin-left: 24px;
+  }
 }

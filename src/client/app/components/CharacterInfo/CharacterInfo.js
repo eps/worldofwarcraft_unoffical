@@ -35,6 +35,7 @@ class CharacterInfo extends React.Component {
     const link = "http://render-us.worldofwarcraft.com/character/";
     const newAvatar = profile.thumbnail;
     const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
+    const warcraftLogs = "https://www.warcraftlogs.com/character/us/"+profile.realm+"/"+profile.name;
     const isAlliance = profile.faction;
     console.log(profile);
 
@@ -98,6 +99,9 @@ class CharacterInfo extends React.Component {
           <div className={styles.profileLinks}>
             <a href={armory} title="Armory Profile">
               <img src="../assets/img/wow-icon.png" alt="" />
+            </a>
+            <a className={styles.warcraftLogs} href={warcraftLogs} title="Warcraft Logs">
+              <img src="../assets/img/warcraft-logs-icon.png" alt="" />
             </a>
           </div>
         </div>
