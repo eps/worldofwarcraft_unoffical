@@ -3,29 +3,41 @@ import React from 'react';
 import cx from 'classnames';
 import Logs from './Logs/Logs';
 import styles from './LogsSection.scss';
-import FaCaretRight from 'react-icons/lib/fa/caret-right';
-import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
 class LogsSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMe: false,
-      active: false
+      showMythic: false,
+      showHeroic: false,
+      showNormal: false
     }
-    this.normalDropDown = this.normalDropDown.bind(this);
-    this.selected = this.selected.bind(this);
+    this.mythic = this.mythic.bind(this);
+    this.heroic = this.heroic.bind(this);
+    this.normal = this.normal.bind(this);
   }
 
-  selected() {
-    this.setState({active: !this.state.active});
-    console.log('selected');
+  mythic() {
+    this.setState({
+      showMythic: !this.state.showMythic,
+      showHeroic: false,
+      showNormal: false,
+    });
   }
-
-  normalDropDown() {
-    this.setState({ showMe : true });
+  heroic() {
+    this.setState({
+      showHeroic: !this.state.showHeroic,
+      showMythic: false,
+      showNormal: false
+    });
   }
-
+  normal() {
+    this.setState({
+      showNormal: !this.state.showNormal,
+      showMythic: false,
+      showHeroic: false
+    });
+  }
 
   render() {
     const { logs } = this.props;
@@ -43,22 +55,19 @@ class LogsSection extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td className={this.state.active ? `${styles.selected}` : `${styles.difficultyTab}` }  onClick={this.selected}>
-                <span onClick={this.normalDropDown}>
+              <td className={ this.state.showMythic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.mythic}>
+                <span>
                   Mythic
-                  { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                 </span>
               </td>
-              <td className={styles.difficultyTab}>
-                <span onClick={this.normalDropDown}>
+              <td className={ this.state.showHeroic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.heroic}>
+                <span>
                   Heroic
-                  { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                 </span>
               </td>
-              <td className={styles.difficultyTab}>
-                <span onClick={this.normalDropDown}>
+              <td className={ this.state.showNormal ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.normal}>
+                <span>
                   Normal
-                  { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                 </span>
               </td>
             </tr>

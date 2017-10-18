@@ -15,17 +15,24 @@
   color: #FFF;
   width: 100%;
   border: 2px solid $black;
+  font-size: 1.3rem;
   .table-head {
     background-color: $black;
     padding: 8px;
     text-align: left;
   }
 }
-.selected {
+
+.toggled {
   border: 1px solid $white;
-  background-color: red;
+  background-color: $purple;
   display: inline-block;
+  &:hover {
+    background-color: $grey;
+    cursor: pointer;
+  }
 }
+
 .difficulty-tab {
   border: 1px solid #555555;
   padding: 3px;
