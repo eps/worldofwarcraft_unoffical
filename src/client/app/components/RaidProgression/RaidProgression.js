@@ -38,6 +38,7 @@ class RaidProgression extends React.Component {
   render() {
     const { progress } = this.props;
     const bossKills = _.last(progress.raids).bosses;
+    console.log(bossKills);
     let normal = 0;
     let heroic = 0;
     let mythic = 0;

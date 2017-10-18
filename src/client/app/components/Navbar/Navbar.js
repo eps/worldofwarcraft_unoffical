@@ -3,11 +3,13 @@ import axios from 'axios';
 import React from 'react';
 import styles from './Navbar.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
+import LogsSection from '../LogsSection/LogsSection';
 import config from '../../../../config/config.js';
 import Button from '../commons/Button/Button';
 import FASearch from 'react-icons/lib/fa/search';
 
 const wowKey = config.WOW_API_KEY;
+const warcraftLogKey = config.WARCRAFT_LOGS_API_KEY;
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -28,6 +30,7 @@ class Navbar extends React.Component {
     axios.get('https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=' + wowKey)
       .then((res) => {
         const realmNames = _.map(res.data.realms, 'name');
+        console.log('realms list updated');
         this.setState({
           realmList: realmNames
         });
@@ -48,7 +51,7 @@ class Navbar extends React.Component {
     e.preventDefault();
     console.log('realm is', this.state.realm);
     console.log('character ', this.state.characterName);
-
+;
     const getCharInfo = () => {
        return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey);
     }
@@ -61,16 +64,22 @@ class Navbar extends React.Component {
       return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?fields=progression&locale=en_US&apikey=' + wowKey);
     }
 
+    const getLogs = () => {
+      return axios.get('https://www.warcraftlogs.com:443/v1/parses/character/' + this.state.characterName + '/' + this.state.realm + '/us?api_key=' + warcraftLogKey);
+    }
+
     axios.all([
       getCharInfo(),
       getCharGuild(),
-      getCharProgress()
-    ]).then(axios.spread((profile, guild, progress) => {
+      getCharProgress(),
+      getLogs()
+    ]).then(axios.spread((profile, guild, progress, logs) => {
       this.setState({
         profile: profile.data,
         guild: guild.data.guild || '',
         progress: progress.data.progression,
-        submitted: true
+        submitted: true,
+        logs: logs.data
       });
     })).catch((err) => {
       console.log(err);
@@ -125,6 +134,11 @@ class Navbar extends React.Component {
             profile={this.state.profile}
             progress={this.state.progress}
             realm={this.state.realm}
+          />
+        }
+        { this.state.submitted &&
+          <LogsSection
+            logs={this.state.logs}
           />
         }
       </div>

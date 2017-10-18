@@ -1,0 +1,37 @@
+@import "../../mixins/variables";
+
+.centralized {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.table-center {
+  text-align: center;
+}
+
+.table-details {
+  border-collapse: collapse;
+  background-color: $darkerGrey;
+  color: #FFF;
+  width: 100%;
+  border: 2px solid $black;
+  .table-head {
+    background-color: $black;
+    padding: 8px;
+    text-align: left;
+  }
+}
+.selected {
+  border: 1px solid $white;
+  background-color: red;
+  display: inline-block;
+}
+.difficulty-tab {
+  border: 1px solid #555555;
+  padding: 3px;
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+    background-color: $grey;
+  }
+}
