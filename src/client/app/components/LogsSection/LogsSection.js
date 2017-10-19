@@ -50,7 +50,7 @@ class LogsSection extends React.Component {
             <tr>
               <th className={styles.tableHead}>Warcraft Logs</th>
               <th className={cx(styles.tableHead, styles.tableCenter)}>Best Hestorical Percentage</th>
-              <th className={cx(styles.tableHead, styles.tableCenter)}>Spec</th>
+              <th className={cx(styles.tableHead, styles.tableCenter)}>Equipped</th>
             </tr>
           </thead>
           <tbody>

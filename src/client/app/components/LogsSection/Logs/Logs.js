@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import React from 'react';
+import styles from './Logs.scss';
 
 class Logs extends React.Component {
   constructor(props) {

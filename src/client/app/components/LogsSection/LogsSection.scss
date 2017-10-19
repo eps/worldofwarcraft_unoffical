@@ -5,30 +5,30 @@
   margin: 0 auto;
 }
 
-.table-center {
-  text-align: center;
-}
-
 .table-details {
   border-collapse: collapse;
   background-color: $darkerGrey;
-  color: #FFF;
+  color: $white;
   width: 100%;
   border: 2px solid $black;
-  font-size: 1.3rem;
   .table-head {
     background-color: $black;
     padding: 8px;
+    width: 15rem;
     text-align: left;
+  }
+  .table-center {
+    text-align: center;
   }
 }
 
 .toggled {
   border: 1px solid $white;
   background-color: $purple;
+  padding: 3px;
   display: inline-block;
   &:hover {
-    background-color: $grey;
+    background-color: $purple;
     cursor: pointer;
   }
 }
@@ -39,6 +39,6 @@
   display: inline-block;
   &:hover {
     cursor: pointer;
-    background-color: $grey;
+    background-color: $purple;
   }
 }
