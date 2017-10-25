@@ -20,6 +20,10 @@
   .table-center {
     text-align: center;
   }
+  td {
+    font-size: 1.3rem;
+    padding: 8px;
+  }
 }
 
 .toggled {
@@ -34,7 +38,7 @@
 }
 
 .difficulty-tab {
-  border: 1px solid #555555;
+  border: 1px solid $black;
   padding: 3px;
   display: inline-block;
   &:hover {
