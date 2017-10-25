@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import axios from 'axios';
 import config from '../../../../../config/config.js';
-import styles from './TalentList.scss';
+import styles from './TalentItems.scss';
 import React from 'react';
 
 const wowKey = config.WOW_API_KEY;

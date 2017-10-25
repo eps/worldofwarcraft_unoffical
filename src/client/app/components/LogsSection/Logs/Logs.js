@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../../../../../config/config.js';
 import React from 'react';
 import styles from './Logs.scss';
-import TalentList from './TalentList.js';
+import TalentItems from '../TalentItems/TalentItems.js';
 
 const wowKey = config.WOW_API_KEY;
 
@@ -74,7 +74,7 @@ class Logs extends React.Component {
         <td className={styles.tableCenter}>
           <ul>
             {_.map(spellID, (spell, index) =>
-              <TalentList spell={spell} key={index} />
+              <TalentItems spell={spell} key={index} />
             )}
           </ul>
         </td>
