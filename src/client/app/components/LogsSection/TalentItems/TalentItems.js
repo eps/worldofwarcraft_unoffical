@@ -21,6 +21,7 @@ class TalentList extends React.Component {
        .then((res) => {
          const icon = 'https://blzmedia-a.akamaihd.net/wow/icons/18/' + res.data.icon + '.jpg'
          this.setState({
+           spells: res.data,
            icons: icon
          });
        }).catch((err) => {
@@ -41,10 +42,14 @@ class TalentList extends React.Component {
   // }
 
   render() {
-    console.log('first', this.state);
+    console.log('first', this.state.spells);
+    const wowhead = "http://www.wowhead.com/spell=";
+    const wowZamimg = "//wow.zamimg.com/images/wow/icons/tiny/";
     return (
       <li>
-        <img className={styles.bossPic} src={this.state.icons}/>
+        <a href={wowhead + `${this.props.spell}`}>
+          <img className={styles.tinyIcons} src={this.state.icons} alt="" />
+        </a>
       </li>
     )
   }
