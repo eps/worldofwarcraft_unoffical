@@ -3,6 +3,7 @@ import axios from 'axios';
 import config from '../../../../../config/config.js';
 import React from 'react';
 import styles from './Logs.scss';
+import BossCard from '../BossCard/BossCard.js';
 import TalentItems from '../TalentItems/TalentItems.js';
 
 const wowKey = config.WOW_API_KEY;
@@ -15,29 +16,9 @@ class Logs extends React.Component {
       icon: [],
     }
   }
-
-  // componentDidMount() {
-  //   console.log('log mount');
-  //   const result = _.head(this.props.log.specs);
-  //   const bestPercentage = result.best_historical_percent;
-  //   const talents = result.best_talents;
-  //   const spellID = _.map(talents, 'id');
-  //   for (var i=0;i<spellID.length;i++) {
-  //     axios.get('https://us.api.battle.net/wow/spell/' + spellID[i] + '?locale=en_US&apikey=' + wowKey)
-  //        .then((res) => {
-  //          console.log('axios');
-  //          this.setState({
-  //            spellID : res.data,
-  //            icon: 'https://blzmedia-a.akamaihd.net/wow/icons/18/' + res.data.icon + '.jpg',
-  //          });
-  //        }).catch((err) => {
-  //          console.log(err);
-  //      });
-  //   }
-  // }
-
+  //
   // componentWillMount() {
-  //   axios.get('https://us.api.battle.net/wow/boss/' + this.props.boss.id + '?locale=en_US&apikey=' + wowKey)
+  //   axios.get('https://us.api.battle.net/wow/boss/' + this.props.progress.id + '?locale=en_US&apikey=' + wowKey)
   //     .then((res) => {
   //       const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
   //       this.setState({
@@ -54,31 +35,25 @@ class Logs extends React.Component {
   //   <span key={percent.id}>{percent.best_historical_percent}</span>
   // ));
   render() {
-    const { log } = this.props;
-    const result = _.head(log.specs);
-    const bestPercentage = result.best_historical_percent;
-    const talents = result.best_talents;
-    const spellID = _.map(talents, 'id');
-    const talentIcons = this.state.icon;
-    console.log(spellID);
+    const { log, progress } = this.props;
+    // const result = _.head(log.specs);
+    // const bestPercentage = result.best_historical_percent;
+    // const talents = result.best_talents;
+    // const spellID = _.map(talents, 'id');
+    // console.log('logs', this.props.result);
+
 
     return (
-      <tr>
-        <td className={styles.width}>
-          <img className={styles.bossPic} alt=""/>
-          <span className={styles.name}>{log.name}</span>
-        </td>
+      <td>
         <td className={styles.tableCenter}>
-          {bestPercentage}
+          number
         </td>
         <td className={styles.tableCenter}>
           <ul>
-            {_.map(spellID, (spell, index) =>
-              <TalentItems spell={spell} key={index} />
-            )}
+            number
           </ul>
         </td>
-      </tr>
+      </td>
     )
   }
 

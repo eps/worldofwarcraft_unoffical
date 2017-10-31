@@ -1,8 +1,13 @@
 import * as _ from 'lodash';
-import React from 'react';
+import axios from 'axios';
+import config from '../../../../config/config.js';
 import cx from 'classnames';
+import React from 'react';
+import BossCard from './BossCard/BossCard';
 import Logs from './Logs/Logs';
 import styles from './LogsSection.scss';
+
+const wowKey = config.WOW_API_KEY;
 
 class LogsSection extends React.Component {
   constructor(props) {
@@ -11,12 +16,14 @@ class LogsSection extends React.Component {
       showMythic: false,
       showHeroic: false,
       showNormal: false,
+      showLogs: false,
       bossImageUrl: ''
     }
     this.mythic = this.mythic.bind(this);
     this.heroic = this.heroic.bind(this);
     this.normal = this.normal.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   mythic() {
@@ -47,7 +54,6 @@ class LogsSection extends React.Component {
   }
 
   toggleActive() {
-    console.log('running');
     const result = _.map(this.props.logs, 'difficulty');
     _.forEach(result, (difficult) => {
       if (difficult == 5) {
@@ -60,9 +66,40 @@ class LogsSection extends React.Component {
     });
   }
 
+  handleChange(e) {
+    console.log('running');
+    this.setState({
+      showLogs: !this.state.showLogs
+    })
+  }
+  //
+  // componentWillMount() {
+  //   console.log('log section mount');
+  //   const bossProgress = _.last(this.props.progress.raids).bosses;
+  //   const bossID = _.map(bossProgress, 'id');
+  //   for (var i = 0;i<bossID.length;i++) {
+  //     axios.get('https://us.api.battle.net/wow/boss/' + bossID[i] + '?locale=en_US&apikey=' + wowKey)
+  //       .then((res) => {
+  //         const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
+  //         this.setState({
+  //           bossImageUrl :'https://render-us.worldofwarcraft.com/npcs/zoom/creature-display-' + creatureDisplayId + '.jpg'
+  //         });
+  //       }).catch((err) => {
+  //         console.log(err);
+  //       });
+  //     }
+  // }
+  // {_.map(logs, (log, index) => (
+  //   <Logs
+  //     progress={this.props.progress}
+  //     log={log}
+  //     key={index}
+  //   />
+  // ))}
+
   render() {
     const { logs, progress } = this.props;
-    const bossKills = _.last(progress.raids).bosses;
+    const bossProgress = _.last(progress.raids).bosses;
     const name = _.map(logs, 'name');
 
     return (
@@ -92,15 +129,18 @@ class LogsSection extends React.Component {
                   Normal
                 </span>
               </td>
+              <td></td>
             </tr>
           </tbody>
           <tbody>
-          {_.map(logs, (log, index) => (
-            <Logs
-              log={log}
-              key={index}
-            />
-          ))}
+            {_.map(bossProgress, (boss, index) => (
+                <BossCard
+                  boss={boss}
+                  key={index}
+                  logs={logs}
+                />
+              ))
+            }
           </tbody>
         </table>
       </div>
