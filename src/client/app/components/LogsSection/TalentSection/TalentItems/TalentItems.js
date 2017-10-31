@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import axios from 'axios';
-import config from '../../../../../config/config.js';
+import config from '../../../../../../config/config.js';
 import styles from './TalentItems.scss';
 import React from 'react';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import TalentItems from '../TalentItems/TalentItems.js';
+import TalentItems from './TalentItems/TalentItems.js';
 
 class TalentSection extends React.Component {
   render() {
