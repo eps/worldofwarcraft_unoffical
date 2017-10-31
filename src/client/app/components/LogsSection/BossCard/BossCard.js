@@ -61,7 +61,7 @@ class BossCard extends React.Component {
           ? <td className={styles.tableCenter}>x 0</td>
           : <Logs
               progress={this.props.boss}
-              result={result}
+              log={result}
             />
         }
       </tr>
