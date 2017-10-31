@@ -1,6 +1,10 @@
 .table-center {
   text-align: center;
-  ul {
-    list-style-type: none;
-  }
+}
+
+.name {
+  padding-left: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

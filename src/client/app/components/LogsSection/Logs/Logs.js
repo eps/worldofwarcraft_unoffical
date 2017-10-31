@@ -31,9 +31,12 @@ class Logs extends React.Component {
   // const following = _.map(_.take(this.props.profile.following, 3), (following) => (
   //     <img key={following.id} className={styles.image} src={`${baseUrl}/30x30/${following.image}`} />
   //   ));
+
+  // <ul>
   // {_.map(spellID, (spell, index) =>
   //   <TalentItems spell={spell} key={index} />
   // )}
+  // </ul>
   render() {
     const { log, progress } = this.props;
     const bestPercentage = log.specs[0].best_historical_percent;
@@ -41,18 +44,11 @@ class Logs extends React.Component {
     const spellID = _.map(talents, 'id');
 
     return (
-      <td>
+      <tbody>
         <td className={styles.tableCenter}>
-          {bestPercentage}
+          <span className={styles.textCenter}>{bestPercentage}</span>
         </td>
-        <td className={styles.tableCenter}>
-          <ul>
-          {_.map(spellID, (spell, index) =>
-            <TalentItems spell={spell} key={index} />
-          )}
-          </ul>
-        </td>
-      </td>
+      </tbody>
     )
   }
 

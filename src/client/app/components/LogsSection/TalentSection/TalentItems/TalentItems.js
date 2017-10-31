@@ -6,7 +6,7 @@ import React from 'react';
 
 const wowKey = config.WOW_API_KEY;
 
-class TalentList extends React.Component {
+class TalentItems extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -16,7 +16,6 @@ class TalentList extends React.Component {
 
   //
   componentDidMount() {
-    console.log('talent', this.props.spell);
     axios.get('https://us.api.battle.net/wow/spell/' + this.props.spell + '?locale=en_US&apikey=' + wowKey)
        .then((res) => {
          const icon = 'https://blzmedia-a.akamaihd.net/wow/icons/18/' + res.data.icon + '.jpg'
@@ -42,9 +41,7 @@ class TalentList extends React.Component {
   // }
 
   render() {
-    console.log('first', this.state.spells);
     const wowhead = "http://www.wowhead.com/spell=";
-    const wowZamimg = "//wow.zamimg.com/images/wow/icons/tiny/";
     return (
       <li>
         <a href={wowhead + `${this.props.spell}`}>
@@ -55,4 +52,4 @@ class TalentList extends React.Component {
   }
 }
 
-export default TalentList;
+export default TalentItems;

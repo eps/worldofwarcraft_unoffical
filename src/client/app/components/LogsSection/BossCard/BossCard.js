@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from '../../../../../config/config.js';
 import styles from './BossCard.scss';
 import Logs from '../Logs/Logs.js';
+import TalentSection from '../TalentSection/TalentSection.js';
 import React from 'react';
 
 const wowKey = config.WOW_API_KEY;
@@ -55,14 +56,18 @@ class BossCard extends React.Component {
       <tr>
         <td>
           <img style={{width: '50px', height: '50px'}} src={this.state.bossImageUrl}/>
-          {this.props.boss.name}
+          <span className={styles.name}>{this.props.boss.name}</span>
         </td>
         { !this.state.active
-          ? <td className={styles.tableCenter}>x 0</td>
+          ? <td className={styles.tableCenter}><span>x 0</span></td>
           : <Logs
               progress={this.props.boss}
               log={result}
             />
+        }
+        { !this.state.active
+          ? <td className={styles.tableCenter}><span>-</span></td>
+          : <td className={styles.tableCenter}><TalentSection log={result} /></td>
         }
       </tr>
     )

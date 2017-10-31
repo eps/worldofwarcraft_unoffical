@@ -129,7 +129,8 @@ class LogsSection extends React.Component {
                   Normal
                 </span>
               </td>
-              <td></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
           </tbody>
           <tbody>
