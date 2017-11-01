@@ -5,7 +5,6 @@ import styles from './Navbar.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import LogsSection from '../LogsSection/LogsSection';
 import config from '../../../../config/config.js';
-import Button from '../commons/Button/Button';
 import FASearch from 'react-icons/lib/fa/search';
 
 const wowKey = config.WOW_API_KEY;
@@ -51,7 +50,6 @@ class Navbar extends React.Component {
     e.preventDefault();
     console.log('realm is', this.state.realm);
     console.log('character ', this.state.characterName);
-;
     const getCharInfo = () => {
        return axios.get('https://us.api.battle.net/wow/character/' + this.state.realm + '/' + this.state.characterName + '?locale=en_US&apikey=' + wowKey);
     }
@@ -84,12 +82,12 @@ class Navbar extends React.Component {
     })).catch((err) => {
       console.log(err);
     });
-  };
+  }
 
   handleRealmChange(e) {
     console.log('currently selected', e.target.value);
     this.setState({realm: e.target.value});
-  };
+  }
 
   render() {
     const realmList = this.state.realmList;

@@ -1,7 +1,9 @@
+import _ from 'lodash'
 import axios from 'axios';
 import config from '../../../../../config/config.js';
 import styles from './BossCard.scss';
 import Logs from '../Logs/Logs.js';
+import PropTypes from 'prop-types';
 import TotalKills from '../TotalKills/TotalKills.js';
 import TalentSection from '../TalentSection/TalentSection.js';
 import React from 'react';
@@ -32,7 +34,6 @@ class BossCard extends React.Component {
   }
 
   checkBosses() {
-    var newState = {};
     const { boss } = this.props;
     const name = _.map(this.props.logs, 'name');
     _.forEach(name, function(value) {
@@ -43,7 +44,7 @@ class BossCard extends React.Component {
   }
 
   render() {
-    const { logs, boss } = this.props;
+    const { logs } = this.props;
     let result = null;
     _.forEach(logs, (value) => {
       if (value.name == this.props.boss.name) {
@@ -74,7 +75,11 @@ class BossCard extends React.Component {
       </tr>
     )
   }
-
 }
+
+BossCard.propTypes = {
+  boss: PropTypes.object.isRequired,
+  logs: PropTypes.array.isRequired
+};
 
 export default BossCard;

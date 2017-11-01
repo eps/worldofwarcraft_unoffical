@@ -1,13 +1,9 @@
 import * as _ from 'lodash';
-import axios from 'axios';
-import config from '../../../../config/config.js';
 import cx from 'classnames';
 import React from 'react';
 import BossCard from './BossCard/BossCard';
-import Logs from './Logs/Logs';
+import PropTypes from 'prop-types';
 import styles from './LogsSection.scss';
-
-const wowKey = config.WOW_API_KEY;
 
 class LogsSection extends React.Component {
   constructor(props) {
@@ -66,41 +62,16 @@ class LogsSection extends React.Component {
     });
   }
 
-  handleChange(e) {
+  handleChange() {
     console.log('running');
     this.setState({
       showLogs: !this.state.showLogs
     })
   }
-  //
-  // componentWillMount() {
-  //   console.log('log section mount');
-  //   const bossProgress = _.last(this.props.progress.raids).bosses;
-  //   const bossID = _.map(bossProgress, 'id');
-  //   for (var i = 0;i<bossID.length;i++) {
-  //     axios.get('https://us.api.battle.net/wow/boss/' + bossID[i] + '?locale=en_US&apikey=' + wowKey)
-  //       .then((res) => {
-  //         const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
-  //         this.setState({
-  //           bossImageUrl :'https://render-us.worldofwarcraft.com/npcs/zoom/creature-display-' + creatureDisplayId + '.jpg'
-  //         });
-  //       }).catch((err) => {
-  //         console.log(err);
-  //       });
-  //     }
-  // }
-  // {_.map(logs, (log, index) => (
-  //   <Logs
-  //     progress={this.props.progress}
-  //     log={log}
-  //     key={index}
-  //   />
-  // ))}
 
   render() {
     const { logs, progress } = this.props;
     const bossProgress = _.last(progress.raids).bosses;
-    const name = _.map(logs, 'name');
 
     return (
       <div className={styles.centralized}>
@@ -148,7 +119,12 @@ class LogsSection extends React.Component {
         </table>
       </div>
     )
-  };
+  }
+}
+
+LogsSection.propTypes = {
+  logs: PropTypes.array.isRequired,
+  progress: PropTypes.object.isRequired
 }
 
 export default LogsSection;

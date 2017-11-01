@@ -1,8 +1,10 @@
+import * as _ from 'lodash';
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import config from '../../../../../config/config.js';
 import styles from './MythicCard.scss';
+import PropTypes from 'prop-types';
 
 const wowKey = config.WOW_API_KEY;
 
@@ -50,5 +52,10 @@ class MythicCard extends React.Component {
     );
   }
 }
+
+MythicCard.propTypes = {
+  kills: PropTypes.object.isRequired
+}
+
 
 export default MythicCard;

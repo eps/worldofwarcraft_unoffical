@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BossKills.scss';
+import PropTypes from 'prop-types';
 
 class BossKills extends React.Component {
 
@@ -8,6 +9,10 @@ class BossKills extends React.Component {
       <span className={styles.bossKills}>{this.props.total}</span>
     )
   }
+}
+
+BossKills.propTypes = {
+  total: PropTypes.number.isRequired
 }
 
 export default BossKills

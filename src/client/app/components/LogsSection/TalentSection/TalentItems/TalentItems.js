@@ -1,6 +1,6 @@
-import * as _ from 'lodash';
 import axios from 'axios';
 import config from '../../../../../../config/config.js';
+import PropTypes from 'prop-types';
 import styles from './TalentItems.scss';
 import React from 'react';
 
@@ -28,18 +28,6 @@ class TalentItems extends React.Component {
      });
   }
 
-  // getCreatureDisplayImage() {
-  //   axios.get('https://us.api.battle.net/wow/boss/' + this.props.kills.id + '?locale=en_US&apikey=' + wowKey)
-  //     .then((res) => {
-  //       const creatureDisplayId = _.first(res.data.npcs).creatureDisplayId;
-  //       this.setState({
-  //         bossImageUrl :'https://render-us.worldofwarcraft.com/npcs/zoom/creature-display-' + creatureDisplayId + '.jpg'
-  //       });
-  //     }).catch((err) => {
-  //       console.log(err);
-  //   });
-  // }
-
   render() {
     const wowhead = "http://www.wowhead.com/spell=";
     return (
@@ -50,6 +38,10 @@ class TalentItems extends React.Component {
       </li>
     )
   }
+}
+
+TalentItems.propTypes = {
+  spell: PropTypes.number.isRequired
 }
 
 export default TalentItems;

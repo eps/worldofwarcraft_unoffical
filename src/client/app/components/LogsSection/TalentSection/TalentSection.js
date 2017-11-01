@@ -1,10 +1,11 @@
+import * as _ from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 import TalentItems from './TalentItems/TalentItems.js';
 
 class TalentSection extends React.Component {
   render() {
     const { log } = this.props;
-    const bestPercentage = log.specs[0].best_historical_percent;
     const talents = log.specs[0].best_talents;
     const spellID = _.map(talents, 'id');
 
@@ -16,6 +17,10 @@ class TalentSection extends React.Component {
       </ul>
     )
   }
+}
+
+TalentSection.propTypes = {
+  log: PropTypes.object.isRequired
 }
 
 export default TalentSection;

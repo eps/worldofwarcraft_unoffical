@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './CharacterRace.scss';
 
 class CharacterRace extends React.Component {
@@ -39,9 +40,6 @@ class CharacterRace extends React.Component {
         break;
       case 11:
         characterRace = "Draenei";
-        break;
-      case 25:
-        characterRace = "Panda";
         break;
       case 25:
         characterRace = "Panda";
@@ -96,5 +94,8 @@ class CharacterRace extends React.Component {
   }
 }
 
+CharacterRace.propTypes = {
+  race: PropTypes.number.isRequired
+}
 
 export default CharacterRace;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CharacterClass.scss';
+import PropTypes from 'prop-types';
 
 class CharacterClass extends React.Component {
   render(){
@@ -92,5 +93,8 @@ class CharacterClass extends React.Component {
   }
 }
 
+CharacterClass.propTypes = {
+  classes: PropTypes.number.isRequired
+}
 
 export default CharacterClass;

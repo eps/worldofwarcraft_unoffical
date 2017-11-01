@@ -4,6 +4,7 @@ import styles from './CharacterInfo.scss';
 import CharacterClass from './CharacterClass/CharacterClass';
 import CharacterRace from './CharacterRace/CharacterRace';
 import RaidProgression from '../RaidProgression/RaidProgression';
+import PropTypes from 'prop-types';
 
 class CharacterInfo extends React.Component {
   constructor(props) {
@@ -31,13 +32,13 @@ class CharacterInfo extends React.Component {
   }
 
   render() {
-    const { profile, guild, progress } = this.props;
+    const { profile, guild } = this.props;
     const link = "http://render-us.worldofwarcraft.com/character/";
     const newAvatar = profile.thumbnail;
     const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
     const warcraftLogs = "https://www.warcraftlogs.com/character/us/"+profile.realm+"/"+profile.name;
     const isAlliance = profile.faction;
-    console.log(profile);
+    console.log(guild);
 
     let faction = null;
     if (isAlliance > 0) {
@@ -108,7 +109,14 @@ class CharacterInfo extends React.Component {
         <RaidProgression progress={this.props.progress} />
       </div>
     )
-  };
+  }
+}
+
+CharacterInfo.propTypes = {
+  profile: PropTypes.object.isRequired,
+  guild: PropTypes.object.isRequired,
+  progress: PropTypes.object.isRequired,
+  faction: PropTypes.number.isRequired
 }
 
 export default CharacterInfo;

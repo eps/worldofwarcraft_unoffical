@@ -1,14 +1,15 @@
 import * as _ from 'lodash';
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
+import FaCaretRight from 'react-icons/lib/fa/caret-right';
+import FaCaretDown from 'react-icons/lib/fa/caret-down';
+import PropTypes from 'prop-types';
 import styles from './RaidProgression.scss';
 import BossKills from './BossKills/BossKills';
 import NormalCard from './NormalCard/NormalCard';
 import HeroicCard from './HeroicCard/HeroicCard';
 import MythicCard from './MythicCard/MythicCard';
 import Progress from './Progress/Progress';
-import FaCaretRight from 'react-icons/lib/fa/caret-right';
-import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
 class RaidProgression extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class RaidProgression extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitHeroic = this.handleSubmitHeroic.bind(this);
     this.handleSubmitMythic = this.handleSubmitMythic.bind(this);
-  };
+  }
 
   handleSubmit(){
     this.setState({showMe: !this.state.showMe});
@@ -156,6 +157,10 @@ class RaidProgression extends React.Component {
       </div>
     );
   }
+}
+
+RaidProgression.propTypes = {
+  progress: PropTypes.object.isRequired
 }
 
 export default RaidProgression;

@@ -1,8 +1,10 @@
-import React from 'react';
+import * as _ from 'lodash';
 import axios from 'axios';
-import moment from 'moment';
 import config from '../../../../../config/config.js';
+import moment from 'moment';
+import React from 'react';
 import styles from './NormalCard.scss';
+import PropTypes from 'prop-types';
 
 const wowKey = config.WOW_API_KEY;
 
@@ -49,6 +51,10 @@ class NormalCard extends React.Component {
       </tr>
     );
   }
+}
+
+NormalCard.propTypes = {
+  kills: PropTypes.object.isRequired
 }
 
 export default NormalCard;

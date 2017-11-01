@@ -5,6 +5,7 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "prop-types": "^15.6.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5"
