@@ -2,7 +2,7 @@ import _ from 'lodash'
 import axios from 'axios';
 import config from '../../../../../config/config.js';
 import styles from './BossCard.scss';
-import Ranking from '../Ranking/Ranking.js';
+import Percentile from '../Percentile/Percentile.js';
 import PropTypes from 'prop-types';
 import TotalKills from '../TotalKills/TotalKills.js';
 import TalentSection from '../TalentSection/TalentSection.js';
@@ -66,7 +66,7 @@ class BossCard extends React.Component {
         }
         { !this.state.active
           ? <td className={styles.tableCenter}><span>-</span></td>
-          : <Ranking ranking={result} />
+          : <Percentile percent={result} />
         }
         { !this.state.active
           ? <td className={styles.tableCenter}><span>-</span></td>
