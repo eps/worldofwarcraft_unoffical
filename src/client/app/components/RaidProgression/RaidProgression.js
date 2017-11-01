@@ -38,6 +38,7 @@ class RaidProgression extends React.Component {
   render() {
     const { progress } = this.props;
     const bossKills = _.last(progress.raids).bosses;
+    console.log(bossKills);
     let normal = 0;
     let heroic = 0;
     let mythic = 0;
@@ -74,8 +75,8 @@ class RaidProgression extends React.Component {
               </thead>
               <tbody>
                 <tr>
-                  <td className={styles.pointer} onClick={this.handleSubmit}>
-                    <span>
+                  <td>
+                    <span onClick={this.handleSubmit}>
                       Normal
                       { this.state.showMe ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
@@ -100,8 +101,8 @@ class RaidProgression extends React.Component {
               }
               <tbody>
                 <tr>
-                  <td className={styles.pointer} onClick={this.handleSubmitHeroic}>
-                    <span>
+                  <td>
+                    <span onClick={this.handleSubmitHeroic}>
                       Heroic
                       { this.state.showHeroic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
@@ -126,8 +127,8 @@ class RaidProgression extends React.Component {
               }
               <tbody>
                 <tr>
-                  <td className={styles.pointer} onClick={this.handleSubmitMythic}>
-                    <span>
+                  <td>
+                    <span onClick={this.handleSubmitMythic}>
                       Mythic
                       { this.state.showMythic ? <FaCaretDown /> : <FaCaretRight /> }
                     </span>
