@@ -2,7 +2,7 @@ import _ from 'lodash'
 import axios from 'axios';
 import config from '../../../../../config/config.js';
 import styles from './BossCard.scss';
-import Logs from '../Logs/Logs.js';
+import Ranking from '../Ranking/Ranking.js';
 import PropTypes from 'prop-types';
 import TotalKills from '../TotalKills/TotalKills.js';
 import TalentSection from '../TalentSection/TalentSection.js';
@@ -66,7 +66,7 @@ class BossCard extends React.Component {
         }
         { !this.state.active
           ? <td className={styles.tableCenter}><span>-</span></td>
-          : <Logs log={result} />
+          : <Ranking ranking={result} />
         }
         { !this.state.active
           ? <td className={styles.tableCenter}><span>-</span></td>

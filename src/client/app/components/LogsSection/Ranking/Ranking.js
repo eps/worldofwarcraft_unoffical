@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Logs.scss';
 
-const Logs = ({log}) => {
+const Ranking = ({ranking}) => {
   return (
     <td className={styles.tableCenter}>
-      {log.specs[0].best_historical_percent}
+      {ranking.specs[0].best_historical_percent}
     </td>
   )
 }
 
-Logs.propTypes = {
-  log: PropTypes.object.isRequired
+Ranking.propTypes = {
+  ranking: PropTypes.object.isRequired
 }
 
-export default Logs;
+export default Ranking;
