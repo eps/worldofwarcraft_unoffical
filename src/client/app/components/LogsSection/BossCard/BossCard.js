@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from '../../../../../config/config.js';
 import styles from './BossCard.scss';
 import Logs from '../Logs/Logs.js';
+import TotalKills from '../TotalKills/TotalKills.js';
 import TalentSection from '../TalentSection/TalentSection.js';
 import React from 'react';
 
@@ -60,6 +61,10 @@ class BossCard extends React.Component {
         </td>
         { !this.state.active
           ? <td className={styles.tableCenter}><span>x 0</span></td>
+          : <TotalKills log={result} />
+        }
+        { !this.state.active
+          ? <td className={styles.tableCenter}><span>-</span></td>
           : <Logs log={result} />
         }
         { !this.state.active

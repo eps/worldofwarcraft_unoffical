@@ -4,7 +4,7 @@ import styles from './Logs.scss';
 const Logs = ({ log }) => {
   return (
     <td className={styles.tableCenter}>
-      <span className={styles.textCenter}>{log.specs[0].best_historical_percent}</span>
+      {log.specs[0].best_historical_percent}
     </td>
   )
 }

@@ -108,8 +108,9 @@ class LogsSection extends React.Component {
           <thead>
             <tr>
               <th className={styles.tableHead}>Warcraft Logs</th>
+              <td className={styles.tableHead}>&nbsp;</td>
               <th className={cx(styles.tableHead, styles.tableCenter)}>Percentage</th>
-              <th className={cx(styles.tableHead, styles.tableCenter)}>Equipped</th>
+              <th className={cx(styles.tableHead, styles.tableCenter)}>Best Talents</th>
             </tr>
           </thead>
           <tbody>
@@ -129,6 +130,7 @@ class LogsSection extends React.Component {
                   Normal
                 </span>
               </td>
+              <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>
