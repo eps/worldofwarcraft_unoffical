@@ -5,33 +5,50 @@
   margin: 0 auto;
 }
 
-.table-center {
-  text-align: center;
+.boss-pic {
+  width: 50px;
+  height: 50px;
 }
 
 .table-details {
   border-collapse: collapse;
   background-color: $darkerGrey;
-  color: #FFF;
+  color: $white;
   width: 100%;
   border: 2px solid $black;
   .table-head {
     background-color: $black;
     padding: 8px;
+    width: 15rem;
     text-align: left;
   }
+  .table-center {
+    text-align: center;
+  }
+  td {
+    font-size: 1.3rem;
+    padding: 8px;
+  }
 }
-.selected {
+
+.toggled {
   border: 1px solid $white;
-  background-color: red;
+  background-color: $purple;
+  padding: 3px;
   display: inline-block;
+  margin-left: -2px;
+  &:hover {
+    background-color: $purple;
+    cursor: pointer;
+  }
 }
+
 .difficulty-tab {
-  border: 1px solid #555555;
+  border: 1px solid $black;
   padding: 3px;
   display: inline-block;
   &:hover {
     cursor: pointer;
-    background-color: $grey;
+    background-color: $purple;
   }
 }

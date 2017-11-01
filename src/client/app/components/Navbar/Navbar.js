@@ -138,6 +138,7 @@ class Navbar extends React.Component {
         }
         { this.state.submitted &&
           <LogsSection
+            progress={this.state.progress}
             logs={this.state.logs}
           />
         }

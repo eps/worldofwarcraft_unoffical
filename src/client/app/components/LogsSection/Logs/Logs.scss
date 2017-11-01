@@ -1,3 +1,7 @@
+td {
+  position: relative;
+}
+
 .boss-pic {
   width: 50px;
   height: 50px;
@@ -7,13 +11,13 @@
   text-align: center;
 }
 
-td {
-  position: relative;
-}
-
 .name {
   padding-left: 10px;
   top: 50%;
   position: absolute;
   transform: translateY(-50%);
+}
+
+.width {
+  width: 33%;
 }

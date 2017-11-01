@@ -18,10 +18,6 @@ ul {
   background-color: #45354a;
 }
 
-.table-center {
-  text-align: center;
-}
-
 .table-details {
   border-collapse:collapse;
   background-color: $darkerGrey;
@@ -40,6 +36,9 @@ ul {
   td {
     font-size: 1.3rem;
     padding: 8px;
+  }
+  .pointer {
+    cursor: pointer;
   }
 }
 
