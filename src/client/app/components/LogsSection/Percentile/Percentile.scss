@@ -1,4 +1,30 @@
+@import "../../../mixins/variables";
+
 .table-center {
   text-align: center;
   font-weight: bold;
+}
+
+.common {
+  color: $common;
+}
+
+.uncommon {
+  color: $uncommon;
+}
+
+.rare {
+  color: $rare;
+}
+
+.epic {
+  color: $epic;
+}
+
+.legendary {
+  color: $legendary;
+}
+
+.artifact {
+  color: $artifact;
 }
