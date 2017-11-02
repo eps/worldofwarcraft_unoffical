@@ -45,7 +45,6 @@ class LogsSection extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mount');
     this.toggleActive();
   }
 
@@ -63,7 +62,6 @@ class LogsSection extends React.Component {
   }
 
   handleChange() {
-    console.log('running');
     this.setState({
       showLogs: !this.state.showLogs
     })
