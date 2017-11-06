@@ -3,19 +3,36 @@ import React from 'react';
 import styles from './Percentile.scss';
 
 const Percentile = ({percent}) => {
+  console.log(percent);
   let percentColor = null;
-  if (percent.specs[0].best_historical_percent >= 95 && percent.specs[0].best_historical_percent < 100) {
-    percentColor = <span className={styles.legendary}>{percent.specs[0].best_historical_percent}</span>;
-  } else if (percent.specs[0].best_historical_percent >= 75 && percent.specs[0].best_historical_percent <= 94) {
-    percentColor = <span className={styles.epic}>{percent.specs[0].best_historical_percent}</span>;
-  } else if (percent.specs[0].best_historical_percent >= 50 && percent.specs[0].best_historical_percent <= 74) {
-    percentColor = <span className={styles.rare}>{percent.specs[0].best_historical_percent}</span>;
-  } else if (percent.specs[0].best_historical_percent >= 25 && percent.specs[0].best_historical_percent <= 49) {
-    percentColor = <span className={styles.uncommon}>{percent.specs[0].best_historical_percent}</span>;
-  } else if (percent.specs[0].best_historical_percent <= 24) {
-    percentColor = <span className={styles.common}>{percent.specs[0].best_historical_percent}</span>;
+  if (percent.specs.length > 1) {
+    if (percent.specs[1].best_historical_percent >= 95 && percent.specs[1].best_historical_percent < 100) {
+      percentColor = <span className={styles.legendary}>{percent.specs[1].best_historical_percent}</span>;
+    } else if (percent.specs[1].best_historical_percent >= 75 && percent.specs[1].best_historical_percent <= 94) {
+      percentColor = <span className={styles.epic}>{percent.specs[1].best_historical_percent}</span>;
+    } else if (percent.specs[1].best_historical_percent >= 50 && percent.specs[1].best_historical_percent <= 74) {
+      percentColor = <span className={styles.rare}>{percent.specs[1].best_historical_percent}</span>;
+    } else if (percent.specs[1].best_historical_percent >= 25 && percent.specs[1].best_historical_percent <= 49) {
+      percentColor = <span className={styles.uncommon}>{percent.specs[1].best_historical_percent}</span>;
+    } else if (percent.specs[1].best_historical_percent <= 24) {
+      percentColor = <span className={styles.common}>{percent.specs[1].best_historical_percent}</span>;
+    } else {
+      percentColor = <span className={styles.artifact}>{percent.specs[1].best_historical_percent}</span>;
+    }
   } else {
-    percentColor = <span className={styles.artifact}>{percent.specs[0].best_historical_percent}</span>;
+    if (percent.specs[0].best_historical_percent >= 95 && percent.specs[0].best_historical_percent < 100) {
+      percentColor = <span className={styles.legendary}>{percent.specs[0].best_historical_percent}</span>;
+    } else if (percent.specs[0].best_historical_percent >= 75 && percent.specs[0].best_historical_percent <= 94) {
+      percentColor = <span className={styles.epic}>{percent.specs[0].best_historical_percent}</span>;
+    } else if (percent.specs[0].best_historical_percent >= 50 && percent.specs[0].best_historical_percent <= 74) {
+      percentColor = <span className={styles.rare}>{percent.specs[0].best_historical_percent}</span>;
+    } else if (percent.specs[0].best_historical_percent >= 25 && percent.specs[0].best_historical_percent <= 49) {
+      percentColor = <span className={styles.uncommon}>{percent.specs[0].best_historical_percent}</span>;
+    } else if (percent.specs[0].best_historical_percent <= 24) {
+      percentColor = <span className={styles.common}>{percent.specs[0].best_historical_percent}</span>;
+    } else {
+      percentColor = <span className={styles.artifact}>{percent.specs[0].best_historical_percent}</span>;
+    }
   }
   return (
     <td className={styles.tableCenter}>

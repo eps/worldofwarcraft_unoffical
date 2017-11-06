@@ -108,7 +108,7 @@ class LogsSection extends React.Component {
   }
 
   render() {
-    const { logs, progress } = this.props;
+    const { progress } = this.props;
     const bossProgress = _.last(progress.raids).bosses;
 
     return (
