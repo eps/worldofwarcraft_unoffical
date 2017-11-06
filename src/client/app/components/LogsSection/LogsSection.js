@@ -18,6 +18,7 @@ class LogsSection extends React.Component {
     this.mythic = this.mythic.bind(this);
     this.heroic = this.heroic.bind(this);
     this.normal = this.normal.bind(this);
+    this.checkDifficulty = this.checkDifficulty.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -46,7 +47,25 @@ class LogsSection extends React.Component {
 
   componentDidMount() {
     this.toggleActive();
+    this.checkDifficulty();
   }
+
+  componentWillReceiveProps(newProps) {
+    console.log('componentWillReceiveProps', newProps);
+    // const result = _.map(newProps.logs, 'difficulty');
+    // console.log(this.state.updatedLogs, result);
+  }
+
+  // componentWillUpdate (newProps, newState) {
+  //   console.log(newProps, newState);
+  // }
+
+  // componentDidUpdate(props, state) {
+  // force rerender
+//   if (!this.state.mayRenderMasonry) {
+//     this.setState({ mayRenderMasonry: true });
+//   }
+// }
 
   toggleActive() {
     const result = _.map(this.props.logs, 'difficulty');
@@ -60,6 +79,27 @@ class LogsSection extends React.Component {
       }
     });
   }
+
+  checkDifficulty() {
+    const mythicParse = [];
+    const heroicParse = [];
+    const normalParse = [];
+    console.log(this.props.logs);
+    _.map(this.props.logs, (log) => {
+        if (log.difficulty == 5) {
+          mythicParse.push(log)
+          this.setState({mythicLogs: mythicParse})
+        }
+        else if (log.difficulty == 4) {
+          heroicParse.push(log)
+          this.setState({heroicLogs: heroicParse})
+        } else {
+          normalParse.push(log)
+          this.setState({normalLogs: normalParse})
+        }
+    })
+  }
+
 
   handleChange() {
     this.setState({
@@ -105,14 +145,33 @@ class LogsSection extends React.Component {
             </tr>
           </tbody>
           <tbody>
-            {_.map(bossProgress, (boss, index) => (
+          { this.state.showMythic &&
+            _.map(bossProgress, (boss, index) => (
                 <BossCard
                   boss={boss}
                   key={index}
-                  logs={logs}
+                  logs={this.state.mythicLogs}
                 />
               ))
-            }
+          }
+          { this.state.showHeroic &&
+            _.map(bossProgress, (boss, index) => (
+                <BossCard
+                  boss={boss}
+                  key={index}
+                  logs={this.state.heroicLogs}
+                />
+              ))
+          }
+          { this.state.showNormal &&
+            _.map(bossProgress, (boss, index) => (
+                <BossCard
+                  boss={boss}
+                  key={index}
+                  logs={this.state.normalLogs}
+                />
+              ))
+          }
           </tbody>
         </table>
       </div>
