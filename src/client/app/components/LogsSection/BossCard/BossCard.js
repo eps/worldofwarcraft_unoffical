@@ -43,12 +43,20 @@ class BossCard extends React.Component {
     }.bind(this));
   }
 
+  componentWillReceiveProps(props) {
+    const name = _.map(props.logs, 'name');
+    _.forEach(name, (value) => {
+      if (value == props.boss.name) {
+        this.setState({active:true});
+      }
+    })
+  }
+
   render() {
     const { logs } = this.props;
     let result = null;
     _.forEach(logs, (value) => {
       if (value.name == this.props.boss.name) {
-        console.log(value);
         result = value
       }
       return result;
