@@ -12,7 +12,6 @@ class LogsSection extends React.Component {
       showMythic: false,
       showHeroic: false,
       showNormal: false,
-      showLogs: false,
       bossImageUrl: ''
     }
     this.mythic = this.mythic.bind(this);
@@ -20,7 +19,6 @@ class LogsSection extends React.Component {
     this.normal = this.normal.bind(this);
     this.checkDifficulty = this.checkDifficulty.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   mythic() {
@@ -52,22 +50,10 @@ class LogsSection extends React.Component {
 
   componentWillReceiveProps(newProps) {
     console.log('componentWillReceiveProps', newProps);
-    // const result = _.map(newProps.logs, 'difficulty');
-    // console.log(this.state.updatedLogs, result);
   }
 
-  // componentWillUpdate (newProps, newState) {
-  //   console.log(newProps, newState);
-  // }
-
-  // componentDidUpdate(props, state) {
-  // force rerender
-//   if (!this.state.mayRenderMasonry) {
-//     this.setState({ mayRenderMasonry: true });
-//   }
-// }
-
   toggleActive() {
+    console.log('toggle running');
     const result = _.map(this.props.logs, 'difficulty');
     _.forEach(result, (difficult) => {
       if (difficult == 5) {
@@ -100,16 +86,13 @@ class LogsSection extends React.Component {
     })
   }
 
-
-  handleChange() {
-    this.setState({
-      showLogs: !this.state.showLogs
-    })
-  }
-
   render() {
     const { progress } = this.props;
     const bossProgress = _.last(progress.raids).bosses;
+    const result = _.map(this.props.logs, 'difficulty');
+    const mythicActive = _.includes(result, 5);
+    const heroicActive = _.includes(result, 4);
+    const normalActive = _.includes(result, 3);
 
     return (
       <div className={styles.centralized}>
@@ -123,18 +106,27 @@ class LogsSection extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className={ this.state.showMythic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.mythic}>
+            <tr className={styles.rankingsTab}>
+              <td className={`
+                ${mythicActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showMythic ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.mythic}
+              >
                 <span>
                   Mythic
                 </span>
               </td>
-              <td className={ this.state.showHeroic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.heroic}>
+              <td className={`
+                ${heroicActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showHeroic ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.heroic}
+              >
                 <span>
                   Heroic
                 </span>
               </td>
-              <td className={ this.state.showNormal ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.normal}>
+              <td className={`
+                ${normalActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showNormal ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.normal}
+              >
                 <span>
                   Normal
                 </span>

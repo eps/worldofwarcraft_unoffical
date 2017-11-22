@@ -29,24 +29,36 @@
     font-size: 1.3rem;
     padding: 8px;
   }
+  .rankings-tab {
+    td {
+      padding: 3px;
+    }
+  }
 }
 
 .toggled {
   border: 1px solid $white;
   background-color: $purple;
-  padding: 3px;
-  display: inline-block;
-  margin-left: -2px;
   &:hover {
     background-color: $purple;
     cursor: pointer;
   }
 }
 
-.difficulty-tab {
-  border: 1px solid $black;
-  padding: 3px;
+.unkilled {
   display: inline-block;
+  color: #606060;
+  pointer-events: none;
+}
+
+.disabled {
+  border: 1px solid #606060;
+}
+
+.active {
+  color: $white;
+  display:inline-block;
+  margin-left: 0px;
   &:hover {
     cursor: pointer;
     background-color: $purple;
