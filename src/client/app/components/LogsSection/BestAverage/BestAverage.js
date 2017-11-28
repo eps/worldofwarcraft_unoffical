@@ -27,6 +27,11 @@ const BestAverage = ({log}) => {
   const avg = sum/count;
   const roundedAvg = Math.round(avg * 10)/10;
 
+  let average = null;
+  if (roundedAvg >= 75 && roundedAvg <= 94) {
+    average = <div className={styles.epic}>{roundedAvg}</div>;
+  }
+
   return (
     <tbody>
       <tr className={styles.stats}>
@@ -34,7 +39,7 @@ const BestAverage = ({log}) => {
         <td>&nbsp;</td>
         <td className={styles.bestPerfAvg}>
           <div>Best Perf Average</div>
-          <div className={styles.percent}>{roundedAvg}</div>
+          <div className={styles.percent}>{average}</div>
         </td>
         <td>&nbsp;</td>
       </tr>

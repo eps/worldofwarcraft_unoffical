@@ -9,5 +9,30 @@
   padding: 15px 0 !important;
   .percent {
     font-size: 3.2rem !important;
+    font-weight: bold;
   }
+}
+
+.common {
+  color: $common;
+}
+
+.uncommon {
+  color: $uncommon;
+}
+
+.rare {
+  color: $rare;
+}
+
+.epic {
+  color: $epic;
+}
+
+.legendary {
+  color: $legendary;
+}
+
+.artifact {
+  color: $artifact;
 }
