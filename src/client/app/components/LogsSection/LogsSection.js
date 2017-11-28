@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import React from 'react';
 import BossCard from './BossCard/BossCard';
+import BestAverage from './BestAverage/BestAverage';
 import PropTypes from 'prop-types';
 import styles from './LogsSection.scss';
 
@@ -136,6 +137,15 @@ class LogsSection extends React.Component {
               <td>&nbsp;</td>
             </tr>
           </tbody>
+          { this.state.showMythic &&
+            <BestAverage log={this.state.mythicLogs} />
+          }
+          { this.state.showHeroic &&
+            <BestAverage log={this.state.heroicLogs} />
+          }
+          { this.state.showNormal &&
+            <BestAverage log={this.state.normalLogs} />
+          }
           <tbody>
           { this.state.showMythic &&
             _.map(bossProgress, (boss, index) => (

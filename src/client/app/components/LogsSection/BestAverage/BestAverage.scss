@@ -1,0 +1,13 @@
+@import "../../../mixins/variables";
+
+.stats {
+  border-bottom: 1px solid $black;
+}
+.best-perf-avg {
+  text-align: center;
+  font-size: 1.8rem !important;
+  padding: 15px 0 !important;
+  .percent {
+    font-size: 3.2rem !important;
+  }
+}

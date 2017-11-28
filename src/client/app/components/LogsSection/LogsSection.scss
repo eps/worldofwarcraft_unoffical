@@ -30,6 +30,7 @@
     padding: 8px;
   }
   .rankings-tab {
+    border-bottom: 1px solid #606060;
     td {
       padding: 3px;
     }
@@ -64,3 +65,15 @@
     background-color: $purple;
   }
 }
+
+// .stats {
+//   border-bottom: 1px solid $black;
+// }
+// .best-perf-avg {
+//   text-align: center;
+//   font-size: 1.8rem !important;
+//   padding: 15px 0 !important;
+//   .percent {
+//     font-size: 3.2rem !important;
+//   }
+// }
