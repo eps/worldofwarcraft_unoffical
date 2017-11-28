@@ -28,10 +28,25 @@ const BestAverage = ({log}) => {
   const roundedAvg = Math.round(avg * 10)/10;
 
   let average = null;
-  if (roundedAvg >= 75 && roundedAvg <= 94) {
-    average = <div className={styles.epic}>{roundedAvg}</div>;
-  }
-
+    if (roundedAvg >= 95 && roundedAvg < 100) {
+      average = <div className={styles.legendary}>{roundedAvg}</div>;
+    }
+    else if (roundedAvg >= 75 && roundedAvg <= 94) {
+      average = <div className={styles.epic}>{roundedAvg}</div>;
+    }
+    else if (roundedAvg >= 50 && roundedAvg <= 74) {
+      average = <div className={styles.rare}>{roundedAvg}</div>;
+    }
+    else if (roundedAvg >= 25 && roundedAvg <= 49) {
+      average = <div className={styles.uncommon}>{roundedAvg}</div>;
+    }
+    else if (roundedAvg <= 24) {
+      average = <div className={styles.common}>{roundedAvg}</div>;
+    }
+    else {
+      average = <div className={styles.artifact}>{roundedAvg}</div>;
+    }
+  
   return (
     <tbody>
       <tr className={styles.stats}>
