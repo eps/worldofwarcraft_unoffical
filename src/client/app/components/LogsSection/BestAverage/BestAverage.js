@@ -24,8 +24,8 @@ const BestAverage = ({log}) => {
     sum += number;
     count++;
   }
-  var avg = sum/count;
-  console.log(avg);
+  const avg = sum/count;
+  const roundedAvg = Math.round(avg * 10)/10;
 
   return (
     <tbody>
@@ -34,7 +34,7 @@ const BestAverage = ({log}) => {
         <td>&nbsp;</td>
         <td className={styles.bestPerfAvg}>
           <div>Best Perf Average</div>
-          <div className={styles.percent}>{avg}</div>
+          <div className={styles.percent}>{roundedAvg}</div>
         </td>
         <td>&nbsp;</td>
       </tr>
