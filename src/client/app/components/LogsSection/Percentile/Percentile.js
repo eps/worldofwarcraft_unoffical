@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './Percentile.scss';
 
 const Percentile = ({percent}) => {
-  console.log(percent);
   let percentColor = null;
   if (percent.specs.length > 1) {
     if (percent.specs[1].best_historical_percent >= 95 && percent.specs[1].best_historical_percent < 100) {

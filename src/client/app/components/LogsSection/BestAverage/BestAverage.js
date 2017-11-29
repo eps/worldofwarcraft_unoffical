@@ -15,8 +15,7 @@ const BestAverage = ({log}) => {
   const mapping = _.map(specs, function(value) {
     return value.best_historical_percent
   })
-  console.log('mapping', mapping);
-
+  
   var sum = 0;
   var count = 0;
   for (var i = 0; i < mapping.length; i++) {
@@ -46,7 +45,7 @@ const BestAverage = ({log}) => {
     else {
       average = <div className={styles.artifact}>{roundedAvg}</div>;
     }
-  
+
   return (
     <tbody>
       <tr className={styles.stats}>

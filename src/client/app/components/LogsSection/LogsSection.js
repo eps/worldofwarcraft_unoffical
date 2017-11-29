@@ -20,6 +20,7 @@ class LogsSection extends React.Component {
     this.normal = this.normal.bind(this);
     this.checkDifficulty = this.checkDifficulty.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
+    this.updateLogs = this.updateLogs.bind(this);
   }
 
   mythic() {
@@ -49,8 +50,47 @@ class LogsSection extends React.Component {
     this.checkDifficulty();
   }
 
-  componentWillReceiveProps(newProps) {
-    console.log('componentWillReceiveProps', newProps);
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    console.log(this.props);
+    if (nextProps.logs !== this.props.logs) {
+      console.log('recieved new props');
+      this.updateLogs(nextProps);
+      this.updateActive(nextProps);
+    }
+  }
+
+  updateLogs(newProps) {
+    console.log('updating running', newProps);
+    const mythicParse = [];
+    const heroicParse = [];
+    const normalParse = [];
+    _.map(newProps.logs, (log) => {
+        if (log.difficulty == 5) {
+          mythicParse.push(log)
+          this.setState({mythicLogs: mythicParse})
+        }
+        else if (log.difficulty == 4) {
+          heroicParse.push(log)
+          this.setState({heroicLogs: heroicParse})
+        } else {
+          normalParse.push(log)
+          this.setState({normalLogs: normalParse})
+        }
+    })
+  }
+
+  updateActive(newProps) {
+    const result = _.map(newProps.logs, 'difficulty');
+    _.forEach(result, (difficult) => {
+      if (difficult == 5) {
+        this.mythic();
+      } else if (difficult == 4) {
+        this.heroic();
+      } else {
+        this.normal();
+      }
+    });
   }
 
   toggleActive() {
@@ -71,7 +111,6 @@ class LogsSection extends React.Component {
     const mythicParse = [];
     const heroicParse = [];
     const normalParse = [];
-    console.log(this.props.logs);
     _.map(this.props.logs, (log) => {
         if (log.difficulty == 5) {
           mythicParse.push(log)
@@ -94,6 +133,7 @@ class LogsSection extends React.Component {
     const mythicActive = _.includes(result, 5);
     const heroicActive = _.includes(result, 4);
     const normalActive = _.includes(result, 3);
+    console.log(this.props.logs);
 
     return (
       <div className={styles.centralized}>
