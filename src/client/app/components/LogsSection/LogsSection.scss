@@ -29,26 +29,51 @@
     font-size: 1.3rem;
     padding: 8px;
   }
+  .rankings-tab {
+    border-bottom: 1px solid #606060;
+    td {
+      padding: 3px;
+    }
+  }
 }
 
 .toggled {
   border: 1px solid $white;
   background-color: $purple;
-  padding: 3px;
-  display: inline-block;
-  margin-left: -2px;
   &:hover {
     background-color: $purple;
     cursor: pointer;
   }
 }
 
-.difficulty-tab {
-  border: 1px solid $black;
-  padding: 3px;
+.unkilled {
   display: inline-block;
+  color: #606060;
+  pointer-events: none;
+}
+
+.disabled {
+  border: 1px solid #606060;
+}
+
+.active {
+  color: $white;
+  display:inline-block;
+  margin-left: 0px;
   &:hover {
     cursor: pointer;
     background-color: $purple;
   }
 }
+
+// .stats {
+//   border-bottom: 1px solid $black;
+// }
+// .best-perf-avg {
+//   text-align: center;
+//   font-size: 1.8rem !important;
+//   padding: 15px 0 !important;
+//   .percent {
+//     font-size: 3.2rem !important;
+//   }
+// }

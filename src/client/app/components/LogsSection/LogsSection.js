@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import React from 'react';
 import BossCard from './BossCard/BossCard';
+import BestAverage from './BestAverage/BestAverage';
 import PropTypes from 'prop-types';
 import styles from './LogsSection.scss';
 
@@ -12,14 +13,14 @@ class LogsSection extends React.Component {
       showMythic: false,
       showHeroic: false,
       showNormal: false,
-      showLogs: false,
       bossImageUrl: ''
     }
     this.mythic = this.mythic.bind(this);
     this.heroic = this.heroic.bind(this);
     this.normal = this.normal.bind(this);
+    this.checkDifficulty = this.checkDifficulty.bind(this);
     this.toggleActive = this.toggleActive.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.updateLogs = this.updateLogs.bind(this);
   }
 
   mythic() {
@@ -46,9 +47,54 @@ class LogsSection extends React.Component {
 
   componentDidMount() {
     this.toggleActive();
+    this.checkDifficulty();
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    console.log(this.props);
+    if (nextProps.logs !== this.props.logs) {
+      console.log('recieved new props');
+      this.updateLogs(nextProps);
+      this.updateActive(nextProps);
+    }
+  }
+
+  updateLogs(newProps) {
+    console.log('updating running', newProps);
+    const mythicParse = [];
+    const heroicParse = [];
+    const normalParse = [];
+    _.map(newProps.logs, (log) => {
+        if (log.difficulty == 5) {
+          mythicParse.push(log)
+          this.setState({mythicLogs: mythicParse})
+        }
+        else if (log.difficulty == 4) {
+          heroicParse.push(log)
+          this.setState({heroicLogs: heroicParse})
+        } else {
+          normalParse.push(log)
+          this.setState({normalLogs: normalParse})
+        }
+    })
+  }
+
+  updateActive(newProps) {
+    const result = _.map(newProps.logs, 'difficulty');
+    _.forEach(result, (difficult) => {
+      if (difficult == 5) {
+        this.mythic();
+      } else if (difficult == 4) {
+        this.heroic();
+      } else {
+        this.normal();
+      }
+    });
   }
 
   toggleActive() {
+    console.log('toggle running');
     const result = _.map(this.props.logs, 'difficulty');
     _.forEach(result, (difficult) => {
       if (difficult == 5) {
@@ -61,15 +107,33 @@ class LogsSection extends React.Component {
     });
   }
 
-  handleChange() {
-    this.setState({
-      showLogs: !this.state.showLogs
+  checkDifficulty() {
+    const mythicParse = [];
+    const heroicParse = [];
+    const normalParse = [];
+    _.map(this.props.logs, (log) => {
+        if (log.difficulty == 5) {
+          mythicParse.push(log)
+          this.setState({mythicLogs: mythicParse})
+        }
+        else if (log.difficulty == 4) {
+          heroicParse.push(log)
+          this.setState({heroicLogs: heroicParse})
+        } else {
+          normalParse.push(log)
+          this.setState({normalLogs: normalParse})
+        }
     })
   }
 
   render() {
-    const { logs, progress } = this.props;
+    const { progress } = this.props;
     const bossProgress = _.last(progress.raids).bosses;
+    const result = _.map(this.props.logs, 'difficulty');
+    const mythicActive = _.includes(result, 5);
+    const heroicActive = _.includes(result, 4);
+    const normalActive = _.includes(result, 3);
+    console.log(this.props.logs);
 
     return (
       <div className={styles.centralized}>
@@ -83,18 +147,27 @@ class LogsSection extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className={ this.state.showMythic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.mythic}>
+            <tr className={styles.rankingsTab}>
+              <td className={`
+                ${mythicActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showMythic ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.mythic}
+              >
                 <span>
                   Mythic
                 </span>
               </td>
-              <td className={ this.state.showHeroic ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.heroic}>
+              <td className={`
+                ${heroicActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showHeroic ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.heroic}
+              >
                 <span>
                   Heroic
                 </span>
               </td>
-              <td className={ this.state.showNormal ? `${styles.toggled}` : `${styles.difficultyTab}`} onClick={this.normal}>
+              <td className={`
+                ${normalActive ? `${styles.active}` : `${styles.unkilled}` } ${this.state.showNormal ? `${styles.toggled}` : `${styles.disabled}` }`}
+                onClick={this.normal}
+              >
                 <span>
                   Normal
                 </span>
@@ -104,15 +177,43 @@ class LogsSection extends React.Component {
               <td>&nbsp;</td>
             </tr>
           </tbody>
+          { this.state.showMythic &&
+            <BestAverage log={this.state.mythicLogs} />
+          }
+          { this.state.showHeroic &&
+            <BestAverage log={this.state.heroicLogs} />
+          }
+          { this.state.showNormal &&
+            <BestAverage log={this.state.normalLogs} />
+          }
           <tbody>
-            {_.map(bossProgress, (boss, index) => (
+          { this.state.showMythic &&
+            _.map(bossProgress, (boss, index) => (
                 <BossCard
                   boss={boss}
                   key={index}
-                  logs={logs}
+                  logs={this.state.mythicLogs}
                 />
               ))
-            }
+          }
+          { this.state.showHeroic &&
+            _.map(bossProgress, (boss, index) => (
+                <BossCard
+                  boss={boss}
+                  key={index}
+                  logs={this.state.heroicLogs}
+                />
+              ))
+          }
+          { this.state.showNormal &&
+            _.map(bossProgress, (boss, index) => (
+                <BossCard
+                  boss={boss}
+                  key={index}
+                  logs={this.state.normalLogs}
+                />
+              ))
+          }
           </tbody>
         </table>
       </div>
