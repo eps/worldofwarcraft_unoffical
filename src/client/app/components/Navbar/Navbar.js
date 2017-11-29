@@ -42,7 +42,6 @@ class Navbar extends React.Component {
     if (e.key === 'Enter') {
       this.handleSubmit()
     }
-    console.log(e.target.value);
     this.setState({[e.target.name]: e.target.value});
   }
 
@@ -63,7 +62,7 @@ class Navbar extends React.Component {
     }
 
     const getLogs = () => {
-      return axios.get('https://www.warcraftlogs.com:443/v1/parses/character/' + this.state.characterName + '/' + this.state.realm + '/us?api_key=' + warcraftLogKey);
+      return axios.get('https://www.warcraftlogs.com:443/v1/parses/character/' + this.state.characterName + '/' + this.state.realm + '/us?zone=13&api_key=' + warcraftLogKey);
     }
 
     axios.all([
