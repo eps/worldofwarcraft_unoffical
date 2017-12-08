@@ -27,9 +27,10 @@
   margin: auto;
   input {
     background-color: $white;
-    width: 50%;
+    width: 45%;
     height: 100%;
     padding-left: 24px;
+    min-height: 35px;
   }
   .searchIcon {
     color: $darkerGrey;
@@ -45,7 +46,7 @@
   float: right;
   position: relative;
   select {
-    height: 100%;
+    height: 37px;
     width: 100%;
   }
 }
