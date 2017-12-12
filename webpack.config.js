@@ -3,8 +3,10 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Uglify = require("uglifyjs-webpack-plugin");
 
-const BUILD_DIR = path.resolve(__dirname, 'src/client/public');
+const BUILD_DIR = path.resolve(__dirname, 'build');
 const APP_DIR = path.resolve(__dirname, 'src/client/app');
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 const config = {
   entry: APP_DIR + '/index.js',
@@ -12,7 +14,18 @@ const config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-  watch: true,
+  watch: false,
+  resolve: {
+    alias: {
+      Config: path.resolve(__dirname, 'src/config'),
+    }
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "src/client"),
+    compress: true,
+    host: HOST,
+    port: DEFAULT_PORT,
+  },
   module : {
     loaders : [
       {
