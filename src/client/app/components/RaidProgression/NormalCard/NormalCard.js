@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import axios from 'axios';
-import config from '../../../../../config/config.js';
+import config from 'Config/config.js';
 import moment from 'moment';
 import React from 'react';
 import styles from './NormalCard.scss';

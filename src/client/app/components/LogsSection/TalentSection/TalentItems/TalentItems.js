@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../../../../../../config/config.js';
+import config from 'Config/config.js';
 import PropTypes from 'prop-types';
 import styles from './TalentItems.scss';
 import React from 'react';
