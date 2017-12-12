@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import config from '../../../../../config/config.js';
+import config from 'Config/config.js';
 import styles from './HeroicCard.scss';
 import PropTypes from 'prop-types';
 

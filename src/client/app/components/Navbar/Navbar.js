@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Navbar.scss';
 import CharacterInfo from '../CharacterInfo/CharacterInfo';
 import LogsSection from '../LogsSection/LogsSection';
-import config from '../../../../config/config.js';
+import config from 'Config/config.js';
 import FASearch from 'react-icons/lib/fa/search';
 
 const wowKey = config.WOW_API_KEY;

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import axios from 'axios';
-import config from '../../../../../config/config.js';
+import config from 'Config/config.js';
 import styles from './BossCard.scss';
 import Percentile from '../Percentile/Percentile.js';
 import PropTypes from 'prop-types';
