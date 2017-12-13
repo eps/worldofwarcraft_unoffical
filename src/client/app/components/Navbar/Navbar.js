@@ -107,7 +107,7 @@ class Navbar extends React.Component {
               <input
                 className={styles.searchInput}
                 type="text"
-                placeholder="Search character (Example: Samiu-Proudmoore)"
+                placeholder="Search character (Example: Epps-Proudmoore)"
                 name="characterName"
                 value={this.state.characterName}
                 onChange={this.handleChange}

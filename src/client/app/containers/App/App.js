@@ -9,6 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
+        <div className={styles.header}>
+          <h1>WoW Character Searcher</h1>
+        </div>
         <Navbar />
       </div>
     );
