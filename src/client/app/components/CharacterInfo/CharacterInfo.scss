@@ -72,12 +72,16 @@
   float: right;
   a {
     display: inline-block;
-    img {
-      width: 24px;
-      height: 24px;
-    }
+    height: 24px;
+    width: 24px;
   }
-  .warcraft-logs {
+  .wowarmory {
+    background: url(/assets/img/wow-icon.png) !important;
+    background-size: contain !important;
+  }
+  .warcraftlogs {
     margin-left: 24px;
+    background: url(/assets/img/warcraft-logs-icon.png) !important;
+    background-size: contain !important;
   }
 }

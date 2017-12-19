@@ -120,7 +120,7 @@ class Navbar extends React.Component {
                 <select id="realm" onChange={this.handleRealmChange} value={this.state.realm}>
                 </select>
               </div>
-              <input type="submit" style={{visibility: 'hidden'}}/>
+              <button type="submit" className={styles.button}>Submit</button>
             </form>
           </div>
         </div>

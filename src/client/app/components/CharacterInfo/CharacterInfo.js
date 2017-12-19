@@ -98,12 +98,8 @@ class CharacterInfo extends React.Component {
             </div>
           </div>
           <div className={styles.profileLinks}>
-            <a href={armory} title="Armory Profile">
-              <img src="../assets/img/wow-icon.png" alt="" />
-            </a>
-            <a className={styles.warcraftLogs} href={warcraftLogs} title="Warcraft Logs">
-              <img src="../assets/img/warcraft-logs-icon.png" alt="" />
-            </a>
+            <a className={styles.wowarmory} href={armory} title="Armory Profile"></a>
+            <a className={styles.warcraftlogs} href={warcraftLogs} title="Warcraft Logs"></a>
           </div>
         </div>
         <RaidProgression progress={this.props.progress} />

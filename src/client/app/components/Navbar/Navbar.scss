@@ -27,10 +27,11 @@
   margin: auto;
   input {
     background-color: $white;
-    width: 45%;
+    width: 40%;
     height: 100%;
     padding-left: 24px;
     min-height: 35px;
+    float: left;
   }
   .searchIcon {
     color: $darkerGrey;
@@ -39,11 +40,16 @@
     left: 6px;
     top: 11px;
   }
+  .button {
+    margin-left: 3px;
+    height: 37px;
+    border-radius: 4px;
+  }
 }
 
 .optionContainer {
-  width: calc(100% - 400px) !important;
-  float: right;
+  width: calc(100% - 414px) !important;
+  float: left;
   position: relative;
   select {
     height: 37px;
