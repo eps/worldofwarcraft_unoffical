@@ -1,6 +1,9 @@
 @import '../../mixins/variables';
 
-html { font-size: 62.5%; }
+html {
+  font-size: 62.5%;
+  height: 100% !important;
+}
 body {
   font-size: 14px;
   font-size: 1.4rem; /* =14px */

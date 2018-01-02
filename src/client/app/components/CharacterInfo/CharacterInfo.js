@@ -33,7 +33,7 @@ class CharacterInfo extends React.Component {
 
   render() {
     const { profile, guild } = this.props;
-    const link = "http://render-us.worldofwarcraft.com/character/";
+    const link = "https://render-us.worldofwarcraft.com/character/";
     const newAvatar = profile.thumbnail;
     const armory = "https://us.battle.net/wow/character/"+profile.realm+"/"+profile.name+"/simple";
     const warcraftLogs = "https://www.warcraftlogs.com/character/us/"+profile.realm+"/"+profile.name;
